@@ -30,6 +30,8 @@ class WoWScrubber:
         self.blizzardAPIKey = blizzKey
         self.raw_directory = rawDir
         self.scrubbed_directory = scrubDir
+        if(not self.scrubbed_directory.endswith("/")):
+            self.scrubbed_directory += "/"
         self.use_tarball = useTar
         self.tarball_name = tar_filename
         self.character_classes = self.__initPlayerClasses()
@@ -535,7 +537,7 @@ class WoWScrubber:
         #         print("\t\t" + socket.get('type'))
 
 
-        file_name = "%s/%s" % (self.scrubbed_directory, index_filepath)
+        file_name = "%s%s" % (self.scrubbed_directory, index_filepath)
         print("FILE: " + file_name)
         if not os.path.exists(os.path.dirname(file_name)):
             os.makedirs(os.path.dirname(file_name))
@@ -599,5 +601,5 @@ wowApiConfig = WoWAPIConfigurator()
 
 # cleaner = WoWScrubber(wowApiConfig.blizzardAPIKey, wowApiConfig.applicationItemDir)
 
-cleaner = WoWScrubber(wowApiConfig.blizzardAPIKey, wowApiConfig.rawJsonDir, wowApiConfig.applicationItemDir, wowApiConfig.runTarball, wowApiConfig.tarballFileName)
+cleaner = WoWScrubber(wowApiConfig.blizzardAPIKey, wowApiConfig.rawJsonDir, wowApiConfig.applicationItemDir, wowApiConfig.runTarball, wowApiConfig.tarballFile)
 cleaner.startScrub()

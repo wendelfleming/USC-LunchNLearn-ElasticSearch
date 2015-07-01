@@ -27,7 +27,7 @@ class WoWAPIConfigurator:
         self.applicationItemDir = "/projects/lunchnlearn/data/wow/items"
 
         # Name of tar gzipped file contained all raw JSON files downloaded - used by scrubber
-        self.tarballFileName = "raw_items.tar.gz"
+        self.tarballFile = "/projects/lunchnlearn/data/wow/raw_items.tar.gz"
 
         # Location of raw JSON files that is downloaded (or exploded from tarballFileName) - used by downloader and scrubber
         # NOTE: Do NOT make the same as applicationItemDir
