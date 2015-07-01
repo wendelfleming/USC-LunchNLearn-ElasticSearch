@@ -27,7 +27,7 @@ from wowelastic.configurator import WoWAPIConfigurator
 class WoWDownloader:
     def __init__(self, blizzKey, saveDir):
         self.blizzardAPIKey = blizzKey
-        self.saveDirectory = saveDir          #"/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/raw_items/"
+        self.saveDirectory = saveDir
         if(not self.saveDirectory.endswith("/")):
             self.saveDirectory += "/"
         self.item_id_start = 9800

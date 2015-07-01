@@ -26,7 +26,6 @@ from wowelastic.configurator import WoWAPIConfigurator
 
 class WoWScrubber:
     def __init__(self, blizzKey, rawDir, scrubDir, useTar, tar_filename):
-    # def __init__(self, blizzKey, newDir):
         self.blizzardAPIKey = blizzKey
         self.raw_directory = rawDir
         self.scrubbed_directory = scrubDir
@@ -295,88 +294,17 @@ class WoWScrubber:
             if os.path.isdir(currentFile):
                 self.__scandirs(currentFile)
             else:
-                # filename = os.path.basename(currentFile)
-                # filepath = os.path.dirname(currentFile)
-                # print("CURR: " + currentFile)
-
                 hashed_path = re.sub(self.raw_directory, '', currentFile)
-                print("DIFF: " + hashed_path)
-
                 self.__runFile(currentFile, hashed_path)
-
-                #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey)
-
-                # print("\n\n\n\n\n\n")
-
-
-
-                # if 'name' not in d:
-                #     if 'availableContexts' in d:
-                #         for av_con in d.get('availableContexts'):
-                #             mod_index_filepath = re.sub(".json", "_" + av_con + ".json", member.name)
-                #             combined = str(d.get('id')) + "/" + av_con
-                #             self.apiRequest2(combined, mod_index_filepath, 0)
-                #     else:
-                #         raise ValueError("NO NAME AND NO AVAILABLECONTEXT: " + member.name)
-                # else:
-                #     self.scrubData(d, member.name)
-
-    # def __handleAvailableContexts(self, json_data, name):
-    #     # availableContexts
-    #     if 'name' not in json_data:
-    #         if 'availableContexts' in json_data:
-    #             for av_con in json_data.get('availableContexts'):
-    #                 mod_index_filepath = re.sub(".json", "_" + av_con + ".json", name)
-    #                 combined = str(json_data.get('id')) + "/" + av_con
-    #                 self.apiRequest2(combined, mod_index_filepath, 0)
-    #         else:
-    #             raise ValueError("NO NAME AND NO AVAILABLECONTEXT: " + name)
-    #     else:
-    #         self.scrubData(json_data, name)
 
 
 
     def __runFile(self, file, index_filepath):
-
-    #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey):
-        # file = "/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/items/0/0/65536.json"
-        # file = "/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/items/229/198/116453.json"
-
         with open(file) as json_data:
             d = json.load(json_data)
             json_data.close()
             self.__handleAvailableContexts(d, index_filepath)
 
-            # # availableContexts
-            # if 'name' not in d:
-            #     if 'availableContexts' in d:
-            #         for av_con in d.get('availableContexts'):
-            #             mod_index_filepath = re.sub(".json", "_" + av_con + ".json", index_filepath)
-            #             combined = str(d.get('id')) + "/" + av_con
-            #             self.apiRequest2(combined, mod_index_filepath, 0)
-            #     else:
-            #         raise ValueError("NO NAME AND NO AVAILABLECONTEXT: " + file)
-            # else:
-            #     self.scrubData(d, index_filepath) #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey)
-
-
-
-    # def apiRequest(self, itemCode, index_filepath, filename): #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey):
-    #     api_url = "https://us.api.battle.net/wow/item/%s?locale=en_US&apikey=%s"
-    #     item_url = api_url % (itemCode, self.blizzardAPIKey)
-    #     response = requests.get(item_url)
-    #
-    #     if(response.status_code == 200):
-    #         if not os.path.exists(os.path.dirname(filename)):
-    #             os.makedirs(os.path.dirname(filename))
-    #         with open(filename, 'w') as f:
-    #             json.dump(response.json(), f)
-    #             f.closed
-    #         self.scrubData(response.json(), index_filepath) #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey)
-    #     elif(response.status_code == 404):
-    #         print("404\n")
-    #     else:
-    #         raise ValueError("HTTP Status Code is %d" % (response.status_code))
 
 
     def __apiRequest(self, itemCode, index_filepath, error_count): #, filename):
@@ -386,7 +314,6 @@ class WoWScrubber:
 
         if(response.status_code == 200):
             self.__scrubData(response.json(), index_filepath)
-            #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey)
         elif(response.status_code == 404):
             print("404\n")
         else:
@@ -403,57 +330,21 @@ class WoWScrubber:
     def __scrubData(self, data, index_filepath): #, character_classes, character_races, item_class, item_subclasses, quality, bind_list, inventory_type, bonus_stats, blizzardAPIKey):
         data['indexPath'] = index_filepath
 
-        # print("INDEX PATH: " + index_filepath)
-        # print("ID: " + str(data.get('id')))
-        # print("NAME: " + data.get('name'))
-        # print("DESCRIPTION: " + data.get('description'))
-        # print("REQUIRED LEVEL: " + str(data.get('requiredLevel')))
-        # print("ITEM LEVEL: " + str(data.get('itemLevel')))
-        # print("BUY PRICE: " + str(data.get('buyPrice')))
-        # print("SELL PRICE: " + str(data.get('sellPrice')))
-        # print("EQUIPPABLE: " + str(data.get('equippable')))
-        # print("HAS SOCKETS: " + str(data.get('hasSockets')))
-
         if 'icon' not in data:
             data['icon'] = "inv_misc_questionmark"
-            print("ICON: inv_misc_questionmark")
-
-        # else:
-        #     print("ICON: " + data.get('icon'))
-
-        # print("ITEM CLASS: " + str(data.get('itemClass')))
-        # print("ITEM SUBCLASS: " + str(data.get('itemSubClass')))
 
         if data.get('itemClass') in self.item_subclasses:
             if data.get('itemSubClass') in self.item_subclasses[data.get('itemClass')]:
                 item_subclass_id = data.get('itemSubClass')
                 data['itemSubClass'] = self.item_subclasses[data.get('itemClass')][item_subclass_id]
-
-                # print("ITEM SUBCLASSNAME: " + self.item_subclasses[data.get('itemClass')][item_subclass_id])
-
             else:
                 raise ValueError("UNKNOWN CLASS/SUBCLASS: " + str(data.get('id')))
 
         if data.get('itemClass') in self.item_class:
             item_class_id = data.get('itemClass')
             data['itemClass'] = self.item_class[item_class_id]
-
-            # print("ITEM CLASSNAME: " + self.item_class[item_class_id])
-
         else:
             raise ValueError("UNKNOWN CLASS: " + str(data.get('id')))
-
-
-        # disenchantingSkillRank
-        # print("DISENCHANT SKILL: " + str(data.get('disenchantingSkillRank')))
-        # armor
-        # print("ARMOR: " + str(data.get('armor')))
-        # nameDescription
-        # print("NAME DESCRIPTION: " + data.get('nameDescription'))
-
-
-        # print("QUALITY: " + str(data.get('quality')))
-        # print("QUALITY NAME: " + self.quality.get(data.get('quality')).get('name'))
 
         quality_id = data.get('quality')
         data['quality'] = self.quality.get(quality_id).get('name')
@@ -461,81 +352,33 @@ class WoWScrubber:
         if data.get('itemBind') not in self.bind_list:
             raise ValueError("ITEM NOT HERE: " + str(data.get('id')))
 
-        # print("ITEM BIND: " + self.bind_list.get(data.get('itemBind')))
-
         bind_id = data.get('itemBind')
         data['itemBind'] = self.bind_list.get(bind_id)
 
-        # print("INVENTORY TYPE: " + str(data.get('inventoryType')))
-
         inventory_type_id = data.get('inventoryType')
-
-        # if inventory_type_id == 20:
-        #     print("INV TYPE 20: " + str(data.get('id')))
-        # if inventory_type_id == 21:
-        #     print("INV TYPE 21: " + str(data.get('id')))
-        # if inventory_type_id == 22:
-        #     print("INV TYPE 22: " + str(data.get('id')))
-        # print("INVENTORY: " + self.inventory_type.get(data.get('inventoryType')))
 
         data['inventoryType'] = self.inventory_type.get(inventory_type_id)
 
-
         for it_stat in data.get('bonusStats'):
-
-            # print("STAT: " + self.bonus_stats[it_stat.get('stat')] + " = " + str(it_stat.get('amount')))
-
             stat_id = it_stat.get('stat')
             it_stat['stat'] = self.bonus_stats[stat_id]
 
-        # if 'itemSet' in data:
-        #     print("ITEMSET:")
-        #     print("\tSET ID: " + str(data.get('itemSet').get('id')))
-        #     print("\tSET NAME: " + str(data.get('itemSet').get('name')))
-        #     print("\tITEMS IN SET: ")
-        #     for set_item in (data.get('itemSet').get('items')):
-        #         print("\t\t" + str(set_item))
-        #     print("\tSET BONUSES: ")
-        #     for set_bonus in (data.get('itemSet').get('setBonuses')):
-        #         print("\t\t(" + str(set_bonus.get('threshold')) + ") " + set_bonus.get('description'))
-
         if 'allowableClasses' in data:
-
-            # print("ALLOWABLE CLASSES:")
-
             a_class = []
             for allow_class in data.get('allowableClasses'):
-
-                # print("\t" + self.character_classes.get(allow_class))
-
                 a_class.append(self.character_classes.get(allow_class))
+
             data['allowableClasses'] = a_class
 
         if 'allowableRaces' in data:
-
-            # print("ALLOWABLE RACES:")
-
-            # allowableRaces has duplicated data in it, need to filter it out
             al_ra = dict()
             allowable_races = []
             for allow_race in data.get('allowableRaces'):
                 al_ra[allow_race] = allow_race
             for races in al_ra:
-
-                # print("\tFACTION: " + (self.character_races.get(races))['side'] + " RACE: " + (self.character_races.get(races))['name'])
-
                 allowable_races.append(self.character_races.get(races))
+
             data['allowableRaces'] = allowable_races
-
-
-        # if 'socketInfo' in data:
-        #     print("SOCKETS")
-        #     if 'socketBonus' in data.get('socketInfo'):
-        #         print("\tSOCKET BONUS: " + data.get('socketInfo').get('socketBonus'))
-        #     print("\tSOCKETS")
-        #     for socket in data.get('socketInfo').get('sockets'):
-        #         print("\t\t" + socket.get('type'))
-
 
         file_name = "%s%s" % (self.scrubbed_directory, index_filepath)
         print("FILE: " + file_name)
@@ -570,19 +413,8 @@ class WoWScrubber:
 
                 self.__handleAvailableContexts(d, member.name)
 
-                # # availableContexts
-                # if 'name' not in d:
-                #     if 'availableContexts' in d:
-                #         for av_con in d.get('availableContexts'):
-                #             mod_index_filepath = re.sub(".json", "_" + av_con + ".json", member.name)
-                #             combined = str(d.get('id')) + "/" + av_con
-                #             self.apiRequest2(combined, mod_index_filepath, 0)
-                #     else:
-                #         raise ValueError("NO NAME AND NO AVAILABLECONTEXT: " + member.name)
-                # else:
-                #     self.scrubData(d, member.name)
-
         tar.close()
+
 
 
     def startScrub(self):
@@ -591,15 +423,8 @@ class WoWScrubber:
         else:
             self.__scandirs(self.raw_directory)
 
-# https://us.api.battle.net/wow/item/  115584/raid-normal  ?locale=en_US&apikey=
-
-
-# cleaner = JSONCleaner(blizzAPIKey, itemDirectory, newItemDir)
-# cleaner.scandirs(itemDirectory)
 
 wowApiConfig = WoWAPIConfigurator()
-
-# cleaner = WoWScrubber(wowApiConfig.blizzardAPIKey, wowApiConfig.applicationItemDir)
 
 cleaner = WoWScrubber(wowApiConfig.blizzardAPIKey, wowApiConfig.rawJsonDir, wowApiConfig.applicationItemDir, wowApiConfig.runTarball, wowApiConfig.tarballFile)
 cleaner.startScrub()
