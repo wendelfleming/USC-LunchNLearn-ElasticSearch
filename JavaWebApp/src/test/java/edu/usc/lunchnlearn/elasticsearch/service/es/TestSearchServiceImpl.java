@@ -36,7 +36,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/test-application-context.xml"})
 @EnableJpaRepositories(basePackages = "edu.usc.lunchnlearn.springmvc.dao")
-public class TestMultiTypeSearchImpl {
+public class TestSearchServiceImpl {
 
     @Autowired
     private MultiTypeSearch multiTypeSearch;

@@ -38,17 +38,19 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public Page<BaseItem> findAll(int pageNumber) {
-        return multiTypeSearch.findAll(pageNumber);
+        return multiTypeSearch.findAll(constructPageable(pageNumber));
     }
+
 
     @Override
     public List<BaseItem> findByItemId(String itemId) {
         return multiTypeSearch.findByItemId(itemId);
     }
 
+
     @Override
     public Page<BaseItem> findAll(String searchString, int pageNumber) {
-        return multiTypeSearch.findAll(searchString, pageNumber);
+        return multiTypeSearch.findAll(searchString, constructPageable(pageNumber));
     }
 
 
@@ -59,3 +61,5 @@ public class SearchServiceImpl implements SearchService {
     }
 
 }
+
+

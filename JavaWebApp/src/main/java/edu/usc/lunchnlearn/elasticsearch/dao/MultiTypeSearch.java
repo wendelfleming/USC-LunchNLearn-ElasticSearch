@@ -17,6 +17,7 @@ package edu.usc.lunchnlearn.elasticsearch.dao;
 
 import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -25,9 +26,9 @@ import java.util.List;
  */
 public interface MultiTypeSearch {
 
-    public Page<BaseItem> findAll(int pageNumber);
+    public Page<BaseItem> findAll(Pageable pageable);
 
-    public Page<BaseItem> findAll(String searchString, int pageNumber);
+    public Page<BaseItem> findAll(String searchString, Pageable pageable);
 
     public List<BaseItem> findByItemId(String itemId);
 

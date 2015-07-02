@@ -46,9 +46,9 @@ public class MultiTypeSearchImpl implements MultiTypeSearch {
     private String[] typeNames;
 
     @Override
-    public Page<BaseItem> findAll(int pageNumber) {
+    public Page<BaseItem> findAll(Pageable pageable) {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withPageable(constructPageable(pageNumber))
+                .withPageable(pageable)
                 .withIndices(indexName)
                 .withTypes(typeNames)
                 .build();
@@ -58,10 +58,10 @@ public class MultiTypeSearchImpl implements MultiTypeSearch {
 
 
     @Override
-    public Page<BaseItem> findAll(String searchString, int pageNumber) {
+    public Page<BaseItem> findAll(String searchString, Pageable pageable) {
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withQuery(queryStringQuery(searchString))
-                .withPageable(constructPageable(pageNumber))
+                .withPageable(pageable)
                 .withIndices(indexName)
                 .withTypes(typeNames)
                 .build();
