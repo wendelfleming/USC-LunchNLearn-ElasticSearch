@@ -13,17 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.usc.lunchnlearn.elasticsearch.service;
+package edu.usc.lunchnlearn.elasticsearch.dao;
 
 import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import org.springframework.data.domain.Page;
 
-/**
- * Created by wfleming on 6/30/15.
- */
+import java.util.List;
 
-public interface SearchService extends IndexService<BaseItem, String> {
+/**
+ * Created by wfleming on 7/2/15.
+ */
+public interface MultiTypeSearch {
+
+    public Page<BaseItem> findAll(int pageNumber);
 
     public Page<BaseItem> findAll(String searchString, int pageNumber);
+
+    public List<BaseItem> findByItemId(String itemId);
+
 
 }

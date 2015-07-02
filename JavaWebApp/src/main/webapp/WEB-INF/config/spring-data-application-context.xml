@@ -30,6 +30,32 @@
         <constructor-arg name="client" ref="client"/>
     </bean>
 
+
+
+    <bean name="multiTypeSearch" class="edu.usc.lunchnlearn.elasticsearch.dao.MultiTypeSearchImpl">
+        <property name="indexName" value="wow"/>
+        <property name="typeNames">
+            <list>
+                <value type="java.lang.String">Recipe</value>
+                <value type="java.lang.String">Miscellaneous</value>
+                <value type="java.lang.String">Gem</value>
+                <value type="java.lang.String">Key</value>
+                <value type="java.lang.String">Trade Goods</value>
+                <value type="java.lang.String">Battle Pets</value>
+                <value type="java.lang.String">Weapon</value>
+                <value type="java.lang.String">Glyph</value>
+                <value type="java.lang.String">Container</value>
+                <value type="java.lang.String">Quest</value>
+                <value type="java.lang.String">Consumable</value>
+                <value type="java.lang.String">Armor</value>
+                <value type="java.lang.String">Reagent</value>
+                <value type="java.lang.String">WoW Token</value>
+                <value type="java.lang.String">No longer available</value>
+            </list>
+        </property>
+    </bean>
+
+
 </beans>
 
 

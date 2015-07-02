@@ -36,10 +36,12 @@ public class ArmorServiceImpl implements ArmorService {
     @Autowired
     private ArmorRepository armorRepository;
 
+    @Override
     public Page<Armor> findAll(int pageNumber) {
         return armorRepository.findAll(constructPageable(pageNumber));
     }
 
+    @Override
     public List<Armor> findByItemId(String itemId) {
 //        return armorRepository.search()
         return armorRepository.findByItemId(itemId);

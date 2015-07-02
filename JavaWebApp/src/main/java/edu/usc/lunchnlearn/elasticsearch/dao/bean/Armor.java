@@ -31,18 +31,18 @@ import java.util.List;
  */
 
 @Document(indexName = "wow", type = "Armor", shards = 1, replicas = 0)
-public class Armor {
+public class Armor extends BaseItem {
 
-    @Id
-    @Field()
-    private String indexPath;
-
-    @JsonProperty("id")
-    private Long itemId;
+//    @Id
+//    @Field()
+//    private String indexPath;
+//
+//    @JsonProperty("id")
+//    private Long itemId;
 
     private Long armor;
 
-    private String name;
+//    private String name;
 
     private List<String> allowableClasses;
 
@@ -54,27 +54,27 @@ public class Armor {
 
     private List<Stat> bonusStats;
 
-    private Long buyPrice;
+//    private Long buyPrice;
 
     private Long containerSlots;
 
-    private String description;
+//    private String description;
 
     private Long disenchantingSkillRank;
 
     private Long displayInfoId;
 
-    private String icon;
+//    private String icon;
 
     private String inventoryType;
 
     private Boolean isAuctionable;
 
-    private String itemBind;
-
-    private String itemClass;
-
-    private String itemSubClass;
+//    private String itemBind;
+//
+//    private String itemClass;
+//
+//    private String itemSubClass;
 
     private Long itemLevel;
 
@@ -82,11 +82,11 @@ public class Armor {
 
     private String nameDescriptionColor;
 
-    private String quality;
+//    private String quality;
 
     private Long requiredLevel;
 
-    private Long sellPrice;
+//    private Long sellPrice;
 
 
 
@@ -383,28 +383,12 @@ public class Armor {
 //},
 
 
-    public String getIndexPath() {
-        return indexPath;
-    }
-
-    public void setIndexPath(String indexPath) {
-        this.indexPath = indexPath;
-    }
-
     public Long getArmor() {
         return armor;
     }
 
     public void setArmor(Long armor) {
         this.armor = armor;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<String> getAllowableClasses() {
@@ -447,28 +431,12 @@ public class Armor {
         this.bonusStats = bonusStats;
     }
 
-    public Long getBuyPrice() {
-        return buyPrice;
-    }
-
-    public void setBuyPrice(Long buyPrice) {
-        this.buyPrice = buyPrice;
-    }
-
     public Long getContainerSlots() {
         return containerSlots;
     }
 
     public void setContainerSlots(Long containerSlots) {
         this.containerSlots = containerSlots;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Long getDisenchantingSkillRank() {
@@ -487,14 +455,6 @@ public class Armor {
         this.displayInfoId = displayInfoId;
     }
 
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
     public String getInventoryType() {
         return inventoryType;
     }
@@ -509,30 +469,6 @@ public class Armor {
 
     public void setIsAuctionable(Boolean isAuctionable) {
         this.isAuctionable = isAuctionable;
-    }
-
-    public String getItemBind() {
-        return itemBind;
-    }
-
-    public void setItemBind(String itemBind) {
-        this.itemBind = itemBind;
-    }
-
-    public String getItemClass() {
-        return itemClass;
-    }
-
-    public void setItemClass(String itemClass) {
-        this.itemClass = itemClass;
-    }
-
-    public String getItemSubClass() {
-        return itemSubClass;
-    }
-
-    public void setItemSubClass(String itemSubClass) {
-        this.itemSubClass = itemSubClass;
     }
 
     public Long getItemLevel() {
@@ -559,35 +495,11 @@ public class Armor {
         this.nameDescriptionColor = nameDescriptionColor;
     }
 
-    public String getQuality() {
-        return quality;
-    }
-
-    public void setQuality(String quality) {
-        this.quality = quality;
-    }
-
     public Long getRequiredLevel() {
         return requiredLevel;
     }
 
     public void setRequiredLevel(Long requiredLevel) {
         this.requiredLevel = requiredLevel;
-    }
-
-    public Long getSellPrice() {
-        return sellPrice;
-    }
-
-    public void setSellPrice(Long sellPrice) {
-        this.sellPrice = sellPrice;
-    }
-
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
     }
 }

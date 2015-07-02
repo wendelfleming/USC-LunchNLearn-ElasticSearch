@@ -24,9 +24,5 @@ import java.util.List;
 /**
  * Created by wfleming on 7/1/15.
  */
-public interface ArmorService {
-    public Page<Armor> findAll(int pageNumber);
-
-    public List<Armor> findByItemId(String itemId);
-
+public interface ArmorService extends IndexService<Armor, String> {
 }

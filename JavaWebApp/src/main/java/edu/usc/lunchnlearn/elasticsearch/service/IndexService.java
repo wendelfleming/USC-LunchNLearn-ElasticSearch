@@ -15,15 +15,24 @@
  */
 package edu.usc.lunchnlearn.elasticsearch.service;
 
-import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 /**
- * Created by wfleming on 6/30/15.
+ * Created by wfleming on 7/2/15.
  */
+public interface IndexService<T, ID> {
 
-public interface SearchService extends IndexService<BaseItem, String> {
+    public Page<T> findAll(int pageNumber);
+    public List<T> findByItemId(String itemId);
 
-    public Page<BaseItem> findAll(String searchString, int pageNumber);
+
+//    List<T> findAll();
+//    List<T> findAllByName();
+//    T findOne(ID id);
+//    void delete(T entity);
+//    void save(T entity);
+
 
 }

@@ -15,11 +15,47 @@
  */
 package edu.usc.lunchnlearn.elasticsearch.service.es;
 
+import edu.usc.lunchnlearn.elasticsearch.dao.MultiTypeSearch;
+import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import edu.usc.lunchnlearn.elasticsearch.service.SearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 /**
  * Created by wfleming on 6/30/15.
  */
 
 public class SearchServiceImpl implements SearchService {
+
+    private static final int NUMBER_OF_RESULTS_PER_PAGE = 10;
+
+    @Autowired
+    private MultiTypeSearch multiTypeSearch;
+
+    @Override
+    public Page<BaseItem> findAll(int pageNumber) {
+        return multiTypeSearch.findAll(pageNumber);
+    }
+
+    @Override
+    public List<BaseItem> findByItemId(String itemId) {
+        return multiTypeSearch.findByItemId(itemId);
+    }
+
+    @Override
+    public Page<BaseItem> findAll(String searchString, int pageNumber) {
+        return multiTypeSearch.findAll(searchString, pageNumber);
+    }
+
+
+
+
+    private Pageable constructPageable(int pageNumber) {
+        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
+    }
+
 }
