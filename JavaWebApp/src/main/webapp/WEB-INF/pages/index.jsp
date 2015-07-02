@@ -49,24 +49,25 @@
         <h3>Search</h3>
 
         <%--<form action="<c:url value="/spring/search"/>" method="post">--%>
-        <form action="${contextPath}/spring/search" method="get">
+        <form action="${contextPath}/spring/simplesearch.html" method="post">
             <input type="hidden" name="x" value="${x}"/>
-            Search: <input type="text" name="searchTerm"/><br/>
+            <input type="hidden" name="currentPage" value="1"/>
+            Search: <input type="text" name="searchQuery"/><br/>
             <input type="submit" value="Search"/>
         </form>
 
 
-        <h3>Database Administration</h3>
+        <%--<h3>Database Administration</h3>--%>
 
         <%--<a href="<c:url value="/spring/db/genre/"/>">Genre</a><br />--%>
         <%--<a href="<c:url value="/spring/db/platform/"/>">Platform</a><br />--%>
         <%--<a href="<c:url value="/spring/db/studio/"/>">Studio</a><br />--%>
         <%--<a href="<c:url value="/spring/db/game/"/>">Game</a><br />--%>
 
-        <a href="${contextPath}/spring/db/genre/?x=${x}">Genre</a><br/>
-        <a href="${contextPath}/spring/db/platform/?x=${x}">Platform</a><br/>
-        <a href="${contextPath}/spring/db/studio/?x=${x}">Studio</a><br/>
-        <a href="${contextPath}/spring/db/game/?x=${x}">Game</a><br/>
+        <%--<a href="${contextPath}/spring/db/genre/?x=${x}">Genre</a><br/>--%>
+        <%--<a href="${contextPath}/spring/db/platform/?x=${x}">Platform</a><br/>--%>
+        <%--<a href="${contextPath}/spring/db/studio/?x=${x}">Studio</a><br/>--%>
+        <%--<a href="${contextPath}/spring/db/game/?x=${x}">Game</a><br/>--%>
     </div>
 </div>
 
