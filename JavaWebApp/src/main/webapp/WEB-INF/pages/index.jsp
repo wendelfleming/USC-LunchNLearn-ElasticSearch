@@ -21,7 +21,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Spring MVC Application</title>
+    <title>WoW ElasticSearch</title>
 
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 

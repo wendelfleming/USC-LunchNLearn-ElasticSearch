@@ -30,7 +30,7 @@ public class HomeController {
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     public String printIndex(ModelMap modelMap) {
-//        modelMap.addAttribute("message", "Welcome to Lunch-n-Learn");
+        modelMap.addAttribute("message", "WoW ElasticSearch");
         return INDEX_PAGE;
     }
 

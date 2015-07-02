@@ -40,30 +40,30 @@
     <import resource="config/spring-data-application-context.xml"/>
 
     <!-- Configuring interceptors based on URI -->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--<bean class="edu.usc.lunchnlearn.springmvc.interceptor.BreadCrumbInterceptor">-->
-                <!--<property name="uriExclusionList">-->
-                    <!--<util:list value-type="java.lang.String">-->
-                        <!--<value>db/game/delete</value>-->
-                    <!--</util:list>-->
-                <!--</property>-->
-                <!--<property name="uriDisplayTextMapping">-->
-                    <!--<map>-->
-                        <!-- The key is from the RequestMapping on the controllers -->
-                        <!--<entry key="index" value="Index"/>-->
-                        <!--<entry key="db/genre" value="Genre DAO"/>-->
-                        <!--<entry key="db/platform" value="Platform DAO"/>-->
-                        <!--<entry key="db/studio" value="Studio DAO"/>-->
-                        <!--<entry key="db/game" value="Game DAO"/>-->
-                        <!--<entry key="gameinfo" value="Game Info"/>-->
-                        <!--<entry key="search" value="Search"/>-->
-                    <!--</map>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="edu.usc.lunchnlearn.elasticsearch.interceptor.BreadCrumbInterceptor">
+                <property name="uriExclusionList">
+                    <util:list value-type="java.lang.String">
+                        <value>db/game/delete</value>
+                    </util:list>
+                </property>
+                <property name="uriDisplayTextMapping">
+                    <map>
+                         <!--The key is from the RequestMapping on the controllers-->
+                        <entry key="index" value="Index"/>
+                        <entry key="db/genre" value="Genre DAO"/>
+                        <entry key="db/platform" value="Platform DAO"/>
+                        <entry key="db/studio" value="Studio DAO"/>
+                        <entry key="db/game" value="Game DAO"/>
+                        <entry key="gameinfo" value="Game Info"/>
+                        <entry key="search" value="Search"/>
+                    </map>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
