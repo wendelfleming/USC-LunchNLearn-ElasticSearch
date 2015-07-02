@@ -89,22 +89,6 @@ public class Armor {
     private Long sellPrice;
 
 
-//    "id":
-//    {
-//        "type": "long"
-//    },
-
-
-
-
-
-
-
-
-
-
-
-
 
 //    "bonusLists":
 //    {
@@ -340,22 +324,6 @@ public class Armor {
 //    {
 //        "type": "long"
 //    },
-
-
-
-
-
-
-
-
-//    "name":
-//    {
-//        "type": "string"
-//    },
-
-
-
-
 //    "requiredAbility":
 //    {
 //        "properties":
@@ -382,14 +350,6 @@ public class Armor {
 //    {
 //        "type": "long"
 //    },
-
-
-
-
-
-
-
-
 //    "socketInfo":
 //    {
 //        "properties":
