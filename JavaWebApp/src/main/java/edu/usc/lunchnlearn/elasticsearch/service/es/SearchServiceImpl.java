@@ -29,16 +29,14 @@ import java.util.List;
  * Created by wfleming on 6/30/15.
  */
 
-public class SearchServiceImpl implements SearchService {
-
-    private static final int NUMBER_OF_RESULTS_PER_PAGE = 10;
+public class SearchServiceImpl extends BaseService implements SearchService {
 
     @Autowired
     private MultiTypeSearch multiTypeSearch;
 
     @Override
     public Page<BaseItem> findAll(int pageNumber) {
-        return multiTypeSearch.findAll(constructPageable(pageNumber));
+        return multiTypeSearch.findAll(this.constructPageable(pageNumber));
     }
 
 
@@ -56,9 +54,6 @@ public class SearchServiceImpl implements SearchService {
 
 
 
-    private Pageable constructPageable(int pageNumber) {
-        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
-    }
 
 }
 

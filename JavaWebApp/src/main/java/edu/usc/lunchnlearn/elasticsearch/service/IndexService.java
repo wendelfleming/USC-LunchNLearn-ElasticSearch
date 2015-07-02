@@ -24,8 +24,8 @@ import java.util.List;
  */
 public interface IndexService<T, ID> {
 
-    public Page<T> findAll(int pageNumber);
-    public List<T> findByItemId(String itemId);
+    Page<T> findAll(int pageNumber);
+    List<T> findByItemId(String itemId);
 
 
 //    List<T> findAll();

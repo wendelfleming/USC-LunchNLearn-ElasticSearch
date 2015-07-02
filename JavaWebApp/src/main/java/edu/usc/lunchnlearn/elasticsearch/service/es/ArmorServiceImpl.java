@@ -29,9 +29,7 @@ import java.util.List;
  * Created by wfleming on 7/1/15.
  */
 
-public class ArmorServiceImpl implements ArmorService {
-
-    private static final int NUMBER_OF_RESULTS_PER_PAGE = 10;
+public class ArmorServiceImpl extends BaseService implements ArmorService {
 
     @Autowired
     private ArmorRepository armorRepository;
@@ -45,16 +43,6 @@ public class ArmorServiceImpl implements ArmorService {
     public List<Armor> findByItemId(String itemId) {
 //        return armorRepository.search()
         return armorRepository.findByItemId(itemId);
-    }
-
-
-
-
-
-
-
-    private Pageable constructPageable(int pageNumber) {
-        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
     }
 
 }

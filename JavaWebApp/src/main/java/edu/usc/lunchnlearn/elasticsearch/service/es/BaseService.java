@@ -13,17 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.usc.lunchnlearn.elasticsearch.service;
+package edu.usc.lunchnlearn.elasticsearch.service.es;
 
-import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Created by wfleming on 6/30/15.
+ * Created by wfleming on 7/2/15.
  */
 
-public interface SearchService extends IndexService<BaseItem, String> {
+public abstract class BaseService {
 
-    Page<BaseItem> findAll(String searchString, int pageNumber);
+    private static final int NUMBER_OF_RESULTS_PER_PAGE = 10;
+
+
+    Pageable constructPageable(int pageNumber) {
+        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
+    }
 
 }

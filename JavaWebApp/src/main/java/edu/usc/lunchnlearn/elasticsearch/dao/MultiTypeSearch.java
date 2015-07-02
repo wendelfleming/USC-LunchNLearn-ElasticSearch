@@ -26,11 +26,11 @@ import java.util.List;
  */
 public interface MultiTypeSearch {
 
-    public Page<BaseItem> findAll(Pageable pageable);
+    Page<BaseItem> findAll(Pageable pageable);
 
-    public Page<BaseItem> findAll(String searchString, Pageable pageable);
+    Page<BaseItem> findAll(String searchString, Pageable pageable);
 
-    public List<BaseItem> findByItemId(String itemId);
+    List<BaseItem> findByItemId(String itemId);
 
 
 }
