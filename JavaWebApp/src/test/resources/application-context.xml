@@ -24,4 +24,6 @@
 
     <bean name="armorService" class="edu.usc.lunchnlearn.elasticsearch.service.es.ArmorServiceImpl"/>
 
+    <bean name="weaponService" class="edu.usc.lunchnlearn.elasticsearch.service.es.WeaponServiceImpl"/>
+
 </beans>

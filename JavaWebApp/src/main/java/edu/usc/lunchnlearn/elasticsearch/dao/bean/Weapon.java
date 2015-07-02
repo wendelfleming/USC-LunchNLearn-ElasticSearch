@@ -13,14 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.usc.lunchnlearn.elasticsearch.service;
+package edu.usc.lunchnlearn.elasticsearch.dao.bean;
 
-import edu.usc.lunchnlearn.elasticsearch.dao.bean.Armor;
-
-import java.util.List;
+import edu.usc.lunchnlearn.elasticsearch.bean.WeaponInfo;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
- * Created by wfleming on 7/1/15.
+ * Created by wfleming on 7/2/15.
  */
-public interface ArmorService extends IndexService<Armor, String> {
+
+@Document(indexName = "wow", type = "Weapon", shards = 1, replicas = 0)
+public class Weapon extends Equipment {
+
+    private WeaponInfo weaponInfo;
+
+    public WeaponInfo getWeaponInfo() {
+        return weaponInfo;
+    }
+
+    public void setWeaponInfo(WeaponInfo weaponInfo) {
+        this.weaponInfo = weaponInfo;
+    }
 }
+
+
+

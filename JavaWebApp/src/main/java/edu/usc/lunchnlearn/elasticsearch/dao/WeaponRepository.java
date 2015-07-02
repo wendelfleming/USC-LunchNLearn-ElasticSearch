@@ -13,14 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.usc.lunchnlearn.elasticsearch.service;
+package edu.usc.lunchnlearn.elasticsearch.dao;
 
-import edu.usc.lunchnlearn.elasticsearch.dao.bean.Armor;
+import edu.usc.lunchnlearn.elasticsearch.dao.bean.Weapon;
+import org.springframework.data.elasticsearch.annotations.Query;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Created by wfleming on 7/1/15.
+ * Created by wfleming on 7/2/15.
  */
-public interface ArmorService extends IndexService<Armor, String> {
+
+@Repository
+public interface WeaponRepository extends ElasticsearchRepository<Weapon, String> {
+
+    @Query("{\"bool\" : {\"must\" : {\"term\" : {\"id\" : \"?0\"}}}}")
+    public List<Weapon> findByItemId(String itemId);
+
+
 }

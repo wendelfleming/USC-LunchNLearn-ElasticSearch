@@ -15,12 +15,11 @@
  */
 package edu.usc.lunchnlearn.elasticsearch.service;
 
-import edu.usc.lunchnlearn.elasticsearch.dao.bean.Armor;
-
-import java.util.List;
+import edu.usc.lunchnlearn.elasticsearch.dao.bean.Weapon;
 
 /**
- * Created by wfleming on 7/1/15.
+ * Created by wfleming on 7/2/15.
  */
-public interface ArmorService extends IndexService<Armor, String> {
+
+public interface WeaponService extends IndexService<Weapon, String> {
 }
