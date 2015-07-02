@@ -17,6 +17,7 @@ package edu.usc.lunchnlearn.elasticsearch.service.es;
 
 import edu.usc.lunchnlearn.elasticsearch.dao.MultiTypeSearch;
 import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
+import edu.usc.lunchnlearn.elasticsearch.service.SearchService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,27 +40,27 @@ import static org.junit.Assert.assertNotNull;
 public class TestSearchServiceImpl {
 
     @Autowired
-    private MultiTypeSearch multiTypeSearch;
+    private SearchService searchService;
 
 
     @Test
     public void testFindAllWithValue() {
-        assertNotNull(multiTypeSearch);
-        Page<BaseItem> findAll = multiTypeSearch.findAll("Black", 1);
+        assertNotNull(searchService);
+        Page<BaseItem> findAll = searchService.findAll("Black", 1);
         assertEquals(29, findAll.getTotalPages());
     }
 
     @Test
     public void testFindAll() {
-        assertNotNull(multiTypeSearch);
-        Page<BaseItem> findAll = multiTypeSearch.findAll(1);
+        assertNotNull(searchService);
+        Page<BaseItem> findAll = searchService.findAll(1);
         assertEquals(6970, findAll.getTotalPages());
     }
 
     @Test
     public void testFindById() {
-        assertNotNull(multiTypeSearch);
-        List<BaseItem> findAll = multiTypeSearch.findByItemId("88065");
+        assertNotNull(searchService);
+        List<BaseItem> findAll = searchService.findByItemId("88065");
         assertEquals(1, findAll.size());
     }
 
