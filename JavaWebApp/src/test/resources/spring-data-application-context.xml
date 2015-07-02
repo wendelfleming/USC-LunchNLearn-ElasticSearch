@@ -32,7 +32,7 @@
 
 
 
-    <bean name="multiTypeSearch" class="edu.usc.lunchnlearn.elasticsearch.dao.MultiTypeSearchImpl">
+    <bean name="multiTypeSearch" class="edu.usc.lunchnlearn.elasticsearch.dao.es.MultiTypeSearchImpl">
         <property name="indexName" value="wow"/>
         <property name="typeNames">
             <list>

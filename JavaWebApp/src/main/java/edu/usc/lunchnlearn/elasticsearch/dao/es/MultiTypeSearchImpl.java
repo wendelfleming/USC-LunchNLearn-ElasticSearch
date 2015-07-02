@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package edu.usc.lunchnlearn.elasticsearch.dao;
+package edu.usc.lunchnlearn.elasticsearch.dao.es;
 
+import edu.usc.lunchnlearn.elasticsearch.dao.MultiTypeSearch;
 import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
