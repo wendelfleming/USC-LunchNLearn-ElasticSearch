@@ -22,6 +22,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by wfleming on 7/2/15.
  */
@@ -36,16 +39,24 @@ public class SimpleSearchController {
     private SearchService searchService;
 
 
-    @RequestMapping(value = "/simplesearch.html", method = RequestMethod.POST)
-    public String printIndex(String searchQuery, int currentPage, ModelMap modelMap) {
+    @RequestMapping(value = "/simplesearch.html", method = RequestMethod.GET)
+    public String search(String searchQuery, int currentPage, ModelMap modelMap) {
 //        modelMap.addAttribute("message", "WoW ElasticSearch");
 
+        Map urlParams = new HashMap<>();
+        urlParams.put("searchQuery", searchQuery);
+        modelMap.addAttribute("urlParams", urlParams);
+
+        modelMap.addAttribute("currentPage", currentPage);
         modelMap.addAttribute("searchterm", searchQuery);
         modelMap.addAttribute("resultsPage", searchService.findAll(searchQuery, currentPage));
 
         return SEARCHRESULT_PAGE;
     }
 
+//    public String cachedSearch(int currentPage, ModelMap modelMap) {
+//        return SEARCHRESULT_PAGE;
+//    }
 
 }
 

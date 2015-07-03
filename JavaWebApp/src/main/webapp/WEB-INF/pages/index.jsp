@@ -43,13 +43,13 @@
 
     <h1>${message}</h1>
 
-    ${usc:breadcrumbbody(x, bCrumbs)}
+    <%--${usc:breadcrumbbody(x, bCrumbs)}--%>
 
     <div id="content_section">
         <h3>Search</h3>
 
         <%--<form action="<c:url value="/spring/search"/>" method="post">--%>
-        <form action="${contextPath}/spring/simplesearch.html" method="post">
+        <form action="${contextPath}/spring/simplesearch.html" method="get">
             <input type="hidden" name="x" value="${x}"/>
             <input type="hidden" name="currentPage" value="1"/>
             Search: <input type="text" name="searchQuery"/><br/>

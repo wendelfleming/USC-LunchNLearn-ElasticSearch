@@ -28,7 +28,7 @@ public abstract class BaseService {
 
 
     Pageable constructPageable(int pageNumber) {
-        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
+        return new PageRequest(--pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
     }
 
 }

@@ -46,4 +46,12 @@
         <function-signature>java.lang.String breadCrumbBody(java.lang.Long, java.util.Map)</function-signature>
     </function>
 
+    <function>
+        <description>This tag handles the pagination code.</description>
+        <display-name>paginator</display-name>
+        <name>paginator</name>
+        <function-class>edu.usc.lunchnlearn.elasticsearch.tags.Paginator</function-class>
+        <function-signature>java.lang.String paginate(int,int,java.util.Map,java.lang.String)</function-signature>
+    </function>
+
 </taglib>

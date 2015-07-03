@@ -92,8 +92,14 @@ public class BreadCrumbInterceptor extends HandlerInterceptorAdapter {
             breadcrumbs.put(crumb.getX(), crumb);
             breadcrumbUrls.put(crumb.getUrl(), crumb.getX());
 
-            modelAndView.getModelMap().put("x",crumb.getX());
+            if(modelAndView.getModelMap().containsKey("urlParams")) {
+                Map urlParams = (Map)modelAndView.getModelMap().get("urlParams");
+                urlParams.put("x", crumb.getX());
+            }
+
+            modelAndView.getModelMap().put("x", crumb.getX());
             modelAndView.getModelMap().put("bCrumbs", breadcrumbs);
+
         }
     }
 
