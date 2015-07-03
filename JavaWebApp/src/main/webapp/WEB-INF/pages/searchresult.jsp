@@ -57,6 +57,7 @@
                 <tr>
                     <th>&nbsp;</th>
                     <th>Name</th>
+                    <th>iLvL</th>
                     <th>Class</th>
                     <th>SubClass</th>
                 </tr>
@@ -66,6 +67,7 @@
                     <tr>
                         <td><img src="http://media.blizzard.com/wow/icons/56/${wowitem.icon}.jpg"/></td>
                         <td>${wowitem.name}</td>
+                        <td>${wowitem.itemLevel}</td>
                         <td>${wowitem.itemClass}</td>
                         <td>${wowitem.itemSubClass}</td>
                     </tr>

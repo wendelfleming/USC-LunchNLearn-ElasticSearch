@@ -48,8 +48,6 @@ public class Equipment extends BaseItem {
 
     private Boolean isAuctionable;
 
-    private Long itemLevel;
-
     private String nameDescription;
 
     private String nameDescriptionColor;
@@ -143,14 +141,6 @@ public class Equipment extends BaseItem {
 
     public void setIsAuctionable(Boolean isAuctionable) {
         this.isAuctionable = isAuctionable;
-    }
-
-    public Long getItemLevel() {
-        return itemLevel;
-    }
-
-    public void setItemLevel(Long itemLevel) {
-        this.itemLevel = itemLevel;
     }
 
     public String getNameDescription() {

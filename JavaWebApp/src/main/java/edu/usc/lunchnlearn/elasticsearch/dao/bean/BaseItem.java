@@ -52,6 +52,8 @@ public class BaseItem {
 
     private Long sellPrice;
 
+    private Long itemLevel;
+
     public String getIndexPath() {
         return indexPath;
     }
@@ -138,5 +140,13 @@ public class BaseItem {
 
     public void setSellPrice(Long sellPrice) {
         this.sellPrice = sellPrice;
+    }
+
+    public Long getItemLevel() {
+        return itemLevel;
+    }
+
+    public void setItemLevel(Long itemLevel) {
+        this.itemLevel = itemLevel;
     }
 }
