@@ -37,8 +37,6 @@ import java.util.List;
 
 public class MultiTypeSearchImpl implements MultiTypeSearch {
 
-    private static final int NUMBER_OF_RESULTS_PER_PAGE = 10;
-
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
@@ -97,9 +95,5 @@ public class MultiTypeSearchImpl implements MultiTypeSearch {
         this.typeNames = typeNames;
     }
 
-
-    private Pageable constructPageable(int pageNumber) {
-        return new PageRequest(pageNumber, NUMBER_OF_RESULTS_PER_PAGE);
-    }
 
 }
