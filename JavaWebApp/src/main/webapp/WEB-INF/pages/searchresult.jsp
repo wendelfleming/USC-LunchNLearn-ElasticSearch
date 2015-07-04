@@ -39,6 +39,9 @@
 
 <body>
 
+<h1><a href="${contextPath}/spring/index.html" style="text-decoration:none">Elastic WoW</a></h1>
+
+
 <div id="main_section">
 
     <h3>Search Results</h3>

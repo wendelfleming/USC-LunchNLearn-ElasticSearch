@@ -41,7 +41,7 @@
 <div id="main_section">
 
 
-    <h1>${message}</h1>
+    <h1>Elastic WoW</h1>
 
     <%--${usc:breadcrumbbody(x, bCrumbs)}--%>
 
