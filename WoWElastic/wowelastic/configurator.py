@@ -38,3 +38,6 @@ class WoWAPIConfigurator:
         # My suggestion is to untar the tarball that comes from github and set this to fall after setting rawJsonDir to
         # the location you unpacked the file at - used by scrubber
         self.runTarball = True
+
+        # Location of the mapping files.  This is used to set up the index. - used by indexer
+        self.mappingDir = "/projects/lunchnlearn/data/wow/mappings"

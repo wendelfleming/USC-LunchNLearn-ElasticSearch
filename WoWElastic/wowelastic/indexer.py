@@ -17,17 +17,43 @@ __author__ = 'wendel fleming'
 
 import os, glob
 from elasticsearch import Elasticsearch
+from elasticsearch.client import IndicesClient
 import json
 
 from wowelastic.configurator import WoWAPIConfigurator
 
 class WoWIndexer:
-    def __init__(self, directory):
-        self.base_directory = directory
+    def __init__(self, dir, map_dir):
+        self.base_directory = dir
+        self.map_directory = map_dir
+        if(not self.map_directory.endswith("/")):
+            self.map_directory += "/"
 
 
     def runIndexer(self):
+        self.__createIndex()
         self.__indexDirectory(self.base_directory)
+
+
+    def __createIndex(self):
+        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        ic = IndicesClient(es)
+        if(ic.exists(index='wow')):
+            self.deleteIndex()
+        ic.create(index='wow')
+        blah = glob.glob(os.path.join(self.map_directory, '*'))
+        for currentFile in glob.glob(os.path.join(self.map_directory, '*')):
+            print("MAP FILE: " + currentFile)
+            self.__mapFile(currentFile)
+
+
+    def __mapFile(self, json_map_file):
+        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        ic = IndicesClient(es)
+        with open(json_map_file) as json_data:
+            d = json.load(json_data)
+            doc_type = list(d.keys())[0]
+            ic.put_mapping(index='wow', doc_type=doc_type, body=d)
 
 
     def __indexDirectory(self, path):
@@ -48,6 +74,7 @@ class WoWIndexer:
             es.index(index='wow', doc_type=docType, id=objectId, body=d)
 
 
+
     def deleteIndex(self):
         es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
         es.indices.delete(index='wow', ignore=[400, 404])
@@ -62,7 +89,7 @@ class WoWIndexer:
 
 
 wowApiConfig = WoWAPIConfigurator()
-indexer = WoWIndexer(wowApiConfig.applicationItemDir)
+indexer = WoWIndexer(wowApiConfig.applicationItemDir, wowApiConfig.mappingDir)
 indexer.runIndexer()
 # indexer.searchTest()
 # indexer.deleteIndex()
