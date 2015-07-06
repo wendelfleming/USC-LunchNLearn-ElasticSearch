@@ -1,0 +1,194 @@
+{
+  "Gem": {
+      "properties": {
+          "allowableClasses": {
+              "type": "string"
+          },
+          "armor": {
+              "type": "long"
+          },
+          "baseArmor": {
+              "type": "long"
+          },
+          "bonusSummary": {
+              "type": "object"
+          },
+          "buyPrice": {
+              "type": "long"
+          },
+          "containerSlots": {
+              "type": "long"
+          },
+          "description": {
+              "type": "string"
+          },
+          "displayInfoId": {
+              "type": "long"
+          },
+          "equippable": {
+              "type": "boolean"
+          },
+          "gemInfo": {
+              "properties": {
+                  "bonus": {
+                      "properties": {
+                          "itemLevel": {
+                              "type": "long"
+                          },
+                          "minLevel": {
+                              "type": "long"
+                          },
+                          "name": {
+                              "type": "string"
+                          },
+                          "requiredSkillId": {
+                              "type": "long"
+                          },
+                          "requiredSkillRank": {
+                              "type": "long"
+                          },
+                          "srcItemId": {
+                              "type": "long"
+                          }
+                      }
+                  },
+                  "minItemLevel": {
+                      "type": "long"
+                  },
+                  "type": {
+                      "properties": {
+                          "type": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              }
+          },
+          "hasSockets": {
+              "type": "boolean"
+          },
+          "heroicTooltip": {
+              "type": "boolean"
+          },
+          "icon": {
+              "type": "string"
+          },
+          "id": {
+              "type": "long"
+          },
+          "indexPath": {
+              "type": "string"
+          },
+          "inventoryType": {
+              "type": "string"
+          },
+          "isAuctionable": {
+              "type": "boolean"
+          },
+          "itemBind": {
+              "type": "string"
+          },
+          "itemClass": {
+              "type": "string"
+          },
+          "itemLevel": {
+              "type": "long"
+          },
+          "itemSource": {
+              "properties": {
+                  "sourceId": {
+                      "type": "long"
+                  },
+                  "sourceType": {
+                      "type": "string"
+                  }
+              }
+          },
+          "itemSpells": {
+              "properties": {
+                  "categoryId": {
+                      "type": "long"
+                  },
+                  "consumable": {
+                      "type": "boolean"
+                  },
+                  "nCharges": {
+                      "type": "long"
+                  },
+                  "spell": {
+                      "properties": {
+                          "castTime": {
+                              "type": "string"
+                          },
+                          "description": {
+                              "type": "string"
+                          },
+                          "icon": {
+                              "type": "string"
+                          },
+                          "id": {
+                              "type": "long"
+                          },
+                          "name": {
+                              "type": "string"
+                          }
+                      }
+                  },
+                  "spellId": {
+                      "type": "long"
+                  },
+                  "trigger": {
+                      "type": "string"
+                  }
+              }
+          },
+          "itemSubClass": {
+              "type": "string"
+          },
+          "maxCount": {
+              "type": "long"
+          },
+          "maxDurability": {
+              "type": "long"
+          },
+          "minFactionId": {
+              "type": "long"
+          },
+          "minReputation": {
+              "type": "long"
+          },
+          "name": {
+              "type": "string",
+              "fields": {
+                  "suggest": {
+                      "type": "completion"
+                  }
+              }
+          },
+          "nameDescriptionColor": {
+              "type": "string"
+          },
+          "quality": {
+              "type": "string"
+          },
+          "requiredLevel": {
+              "type": "long"
+          },
+          "requiredSkill": {
+              "type": "long"
+          },
+          "requiredSkillRank": {
+              "type": "long"
+          },
+          "sellPrice": {
+              "type": "long"
+          },
+          "stackable": {
+              "type": "long"
+          },
+          "upgradable": {
+              "type": "boolean"
+          }
+      }
+  }
+}

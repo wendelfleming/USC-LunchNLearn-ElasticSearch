@@ -1,0 +1,312 @@
+{
+    "Armor": {
+        "properties": {
+            "allowableClasses": {
+                "type": "string"
+            },
+            "allowableRaces": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "side": {
+                        "type": "string"
+                    }
+                }
+            },
+            "armor": {
+                "type": "long"
+            },
+            "availableContexts": {
+                "type": "string"
+            },
+            "baseArmor": {
+                "type": "long"
+            },
+            "bonusLists": {
+                "type": "long"
+            },
+            "bonusStats": {
+                "properties": {
+                    "amount": {
+                        "type": "long"
+                    },
+                    "stat": {
+                        "type": "string"
+                    }
+                }
+            },
+            "bonusSummary": {
+                "properties": {
+                    "bonusChances": {
+                        "properties": {
+                            "chanceType": {
+                                "type": "string"
+                            },
+                            "sockets": {
+                                "properties": {
+                                    "socketType": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "stats": {
+                                "properties": {
+                                    "delta": {
+                                        "type": "long"
+                                    },
+                                    "maxDelta": {
+                                        "type": "long"
+                                    },
+                                    "statId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "upgrade": {
+                                "properties": {
+                                    "id": {
+                                        "type": "long"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "upgradeType": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "chanceBonusLists": {
+                        "type": "long"
+                    },
+                    "defaultBonusLists": {
+                        "type": "long"
+                    }
+                }
+            },
+            "boundZone": {
+                "properties": {
+                    "id": {
+                        "type": "long"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "buyPrice": {
+                "type": "long"
+            },
+            "containerSlots": {
+                "type": "long"
+            },
+            "context": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+            },
+            "disenchantingSkillRank": {
+                "type": "long"
+            },
+            "displayInfoId": {
+                "type": "long"
+            },
+            "equippable": {
+                "type": "boolean"
+            },
+            "hasSockets": {
+                "type": "boolean"
+            },
+            "heroicTooltip": {
+                "type": "boolean"
+            },
+            "icon": {
+                "type": "string"
+            },
+            "id": {
+                "type": "long"
+            },
+            "indexPath": {
+                "type": "string"
+            },
+            "inventoryType": {
+                "type": "string"
+            },
+            "isAuctionable": {
+                "type": "boolean"
+            },
+            "itemBind": {
+                "type": "string"
+            },
+            "itemClass": {
+                "type": "string"
+            },
+            "itemLevel": {
+                "type": "long"
+            },
+            "itemSet": {
+                "properties": {
+                    "id": {
+                        "type": "long"
+                    },
+                    "items": {
+                        "type": "long"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "setBonuses": {
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "threshold": {
+                                "type": "long"
+                            }
+                        }
+                    }
+                }
+            },
+            "itemSource": {
+                "properties": {
+                    "sourceId": {
+                        "type": "long"
+                    },
+                    "sourceType": {
+                        "type": "string"
+                    }
+                }
+            },
+            "itemSpells": {
+                "properties": {
+                    "categoryId": {
+                        "type": "long"
+                    },
+                    "consumable": {
+                        "type": "boolean"
+                    },
+                    "nCharges": {
+                        "type": "long"
+                    },
+                    "spell": {
+                        "properties": {
+                            "castTime": {
+                                "type": "string"
+                            },
+                            "cooldown": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "icon": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "long"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "powerCost": {
+                                "type": "string"
+                            },
+                            "range": {
+                                "type": "string"
+                            },
+                            "subtext": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "spellId": {
+                        "type": "long"
+                    },
+                    "trigger": {
+                        "type": "string"
+                    }
+                }
+            },
+            "itemSubClass": {
+                "type": "string"
+            },
+            "maxCount": {
+                "type": "long"
+            },
+            "maxDurability": {
+                "type": "long"
+            },
+            "minFactionId": {
+                "type": "long"
+            },
+            "minReputation": {
+                "type": "long"
+            },
+            "name": {
+                "type": "string",
+                "fields": {
+                    "suggest": {
+                        "type": "completion"
+                    }
+                }
+            },
+            "nameDescription": {
+                "type": "string"
+            },
+            "nameDescriptionColor": {
+                "type": "string"
+            },
+            "quality": {
+                "type": "string"
+            },
+            "requiredAbility": {
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "spellId": {
+                        "type": "long"
+                    }
+                }
+            },
+            "requiredLevel": {
+                "type": "long"
+            },
+            "requiredSkill": {
+                "type": "long"
+            },
+            "requiredSkillRank": {
+                "type": "long"
+            },
+            "sellPrice": {
+                "type": "long"
+            },
+            "socketInfo": {
+                "properties": {
+                    "socketBonus": {
+                        "type": "string"
+                    },
+                    "sockets": {
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "stackable": {
+                "type": "long"
+            },
+            "upgradable": {
+                "type": "boolean"
+            }
+        }
+    }
+}

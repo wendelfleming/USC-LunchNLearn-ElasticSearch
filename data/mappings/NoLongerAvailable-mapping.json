@@ -1,0 +1,117 @@
+{
+    "No longer available": {
+        "properties": {
+            "armor": {
+                "type": "long"
+            },
+            "baseArmor": {
+                "type": "long"
+            },
+            "bonusSummary": {
+                "type": "object"
+            },
+            "buyPrice": {
+                "type": "long"
+            },
+            "containerSlots": {
+                "type": "long"
+            },
+            "description": {
+                "type": "string"
+            },
+            "displayInfoId": {
+                "type": "long"
+            },
+            "equippable": {
+                "type": "boolean"
+            },
+            "hasSockets": {
+                "type": "boolean"
+            },
+            "heroicTooltip": {
+                "type": "boolean"
+            },
+            "icon": {
+                "type": "string"
+            },
+            "id": {
+                "type": "long"
+            },
+            "indexPath": {
+                "type": "string"
+            },
+            "inventoryType": {
+                "type": "string"
+            },
+            "isAuctionable": {
+                "type": "boolean"
+            },
+            "itemBind": {
+                "type": "string"
+            },
+            "itemClass": {
+                "type": "string"
+            },
+            "itemLevel": {
+                "type": "long"
+            },
+            "itemSource": {
+                "properties": {
+                    "sourceId": {
+                        "type": "long"
+                    },
+                    "sourceType": {
+                        "type": "string"
+                    }
+                }
+            },
+            "itemSubClass": {
+                "type": "string"
+            },
+            "maxCount": {
+                "type": "long"
+            },
+            "maxDurability": {
+                "type": "long"
+            },
+            "minFactionId": {
+                "type": "long"
+            },
+            "minReputation": {
+                "type": "long"
+            },
+            "name": {
+                "type": "string",
+                "fields": {
+                    "suggest": {
+                        "type": "completion"
+                    }
+                }
+            },
+            "nameDescriptionColor": {
+                "type": "string"
+            },
+            "quality": {
+                "type": "string"
+            },
+            "requiredLevel": {
+                "type": "long"
+            },
+            "requiredSkill": {
+                "type": "long"
+            },
+            "requiredSkillRank": {
+                "type": "long"
+            },
+            "sellPrice": {
+                "type": "long"
+            },
+            "stackable": {
+                "type": "long"
+            },
+            "upgradable": {
+                "type": "boolean"
+            }
+        }
+    }
+}
