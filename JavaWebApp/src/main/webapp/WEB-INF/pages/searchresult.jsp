@@ -26,7 +26,8 @@
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <c:set var="imageDir" value="${contextPath}/images/"/>
 
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${contextPath}/js/jquery/swfobject.js"></script>
 
     <c:set var="jsPath" value="${contextPath}/js/jbreadcrumb/"/>
@@ -34,6 +35,10 @@
     ${usc:breadcrumbhead(jsPath,cssPath)}
 
     <style type='text/css' media='screen'>@import "${contextPath}/css/lunchnlearn.css";</style>
+
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.min.css";</style>
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.structure.min.css";</style>
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.theme.min.css";</style>
 
 </head>
 

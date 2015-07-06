@@ -25,15 +25,26 @@
 
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="${contextPath}/js/jquery/swfobject.js"></script>
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/js/LunchnLearn.js"></script>
 
     <c:set var="jsPath" value="${contextPath}/js/jbreadcrumb/"/>
     <c:set var="cssPath" value="${contextPath}/css/jbreadcrumb/"/>
-    ${usc:breadcrumbhead(jsPath,cssPath)}
 
     <style type='text/css' media='screen'>@import "${contextPath}/css/lunchnlearn.css";</style>
 
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.min.css";</style>
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.structure.min.css";</style>
+    <style type='text/css' media='screen'>@import "${contextPath}/css/jquery/jquery-ui.theme.min.css";</style>
+
+    <script type="text/javascript">
+        <!--
+        var page_ajaxmapping = "${contextPath}/spring/suggest/";
+        //-->
+    </script>
 </head>
 
 <body>
@@ -43,31 +54,17 @@
 
     <h1>Elastic WoW</h1>
 
-    <%--${usc:breadcrumbbody(x, bCrumbs)}--%>
-
     <div id="content_section">
         <h3>Search</h3>
 
-        <%--<form action="<c:url value="/spring/search"/>" method="post">--%>
+
         <form action="${contextPath}/spring/simplesearch.html" method="get">
             <input type="hidden" name="x" value="${x}"/>
             <input type="hidden" name="currentPage" value="1"/>
-            Search: <input type="text" name="searchQuery"/><br/>
+            Search: <input type="text" name="searchQuery" id="wow_search"/><br/>
             <input type="submit" value="Search"/>
         </form>
 
-
-        <%--<h3>Database Administration</h3>--%>
-
-        <%--<a href="<c:url value="/spring/db/genre/"/>">Genre</a><br />--%>
-        <%--<a href="<c:url value="/spring/db/platform/"/>">Platform</a><br />--%>
-        <%--<a href="<c:url value="/spring/db/studio/"/>">Studio</a><br />--%>
-        <%--<a href="<c:url value="/spring/db/game/"/>">Game</a><br />--%>
-
-        <%--<a href="${contextPath}/spring/db/genre/?x=${x}">Genre</a><br/>--%>
-        <%--<a href="${contextPath}/spring/db/platform/?x=${x}">Platform</a><br/>--%>
-        <%--<a href="${contextPath}/spring/db/studio/?x=${x}">Studio</a><br/>--%>
-        <%--<a href="${contextPath}/spring/db/game/?x=${x}">Game</a><br/>--%>
     </div>
 </div>
 
