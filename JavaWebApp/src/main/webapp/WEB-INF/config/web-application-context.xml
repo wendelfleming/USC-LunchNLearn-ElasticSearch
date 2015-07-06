@@ -26,4 +26,6 @@
 
     <bean name="weaponService" class="edu.usc.lunchnlearn.elasticsearch.service.es.WeaponServiceImpl"/>
 
+    <bean name="searchSuggestService" class="edu.usc.lunchnlearn.elasticsearch.service.es.SearchSuggestServiceImpl"/>
+
 </beans>

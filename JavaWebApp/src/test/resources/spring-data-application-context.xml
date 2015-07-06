@@ -24,7 +24,7 @@
 
     <elasticsearch:repositories base-package="edu.usc.lunchnlearn.elasticsearch.dao" />
 
-    <elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch_wfleming" />
+    <elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="wowelastic" />
 
     <bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
         <constructor-arg name="client" ref="client"/>
@@ -55,6 +55,9 @@
         </property>
     </bean>
 
+    <bean name="searchSuggest" class="edu.usc.lunchnlearn.elasticsearch.dao.es.SearchSuggestImpl">
+        <property name="client" ref="client"/>
+    </bean>
 
 </beans>
 
