@@ -47,7 +47,8 @@ class WoWIndexer:
             print("deleting old index")
             self.deleteIndex()
         ic.create(index='wow')
-        blah = glob.glob(os.path.join(self.map_directory, '*'))
+        print("MAPDIR: " + self.map_directory)
+        # blah = glob.glob(os.path.join(self.map_directory, '*'))
         for currentFile in glob.glob(os.path.join(self.map_directory, '*')):
             print("MAP FILE: " + currentFile)
             self.__mapFile(currentFile)
