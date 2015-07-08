@@ -51,6 +51,7 @@ class WoWIndexer:
         for currentFile in glob.glob(os.path.join(self.map_directory, '*')):
             print("MAP FILE: " + currentFile)
             self.__mapFile(currentFile)
+        print("done create")
 
 
     def __mapFile(self, json_map_file):
