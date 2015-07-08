@@ -24,26 +24,31 @@ class WoWAPIConfigurator:
 
         # Location to save scrubbed JSON files - used by scrubber and indexer
         # self.applicationItemDir = "/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/items"
-        self.applicationItemDir = "/projects/lunchnlearn/data/wow/items"
+        # self.applicationItemDir = "/projects/lunchnlearn/data/wow/items"
+        self.applicationItemDir = "/data/items"
 
         # Name of tar gzipped file contained all raw JSON files downloaded - used by scrubber
-        self.tarballFile = "/projects/lunchnlearn/data/wow/raw_items.tar.gz"
+        # self.tarballFile = "/projects/lunchnlearn/data/wow/raw_items.tar.gz"
+        self.tarballFile = "/data/raw_items.tar.gz"
 
         # Location of raw JSON files that is downloaded (or exploded from tarballFileName) - used by downloader and scrubber
         # NOTE: Do NOT make the same as applicationItemDir
         # self.rawJsonDir = "/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/raw_items"
-        self.rawJsonDir = "/projects/lunchnlearn/data/wow/raw_items"
+        # self.rawJsonDir = "/projects/lunchnlearn/data/wow/raw_items"
+        self.rawJsonDir = "/data/raw_items"
 
         # Should you read the tarball or the rawJsonDir?  True = tarballFileName value, False = rawJsonDir
         # My suggestion is to untar the tarball that comes from github and set this to fall after setting rawJsonDir to
         # the location you unpacked the file at - used by scrubber
-        self.runTarball = True
+        self.runTarball = False
 
         # Location of the mapping files.  This is used to set up the index. - used by indexer
-        self.mappingDir = "/projects/lunchnlearn/data/wow/mappings"
+        # self.mappingDir = "/projects/lunchnlearn/data/wow/mappings"
+        self.mappingDir = "/data/mappings" 
 
         # ElasticSearch host - using Docker VMBox Host IP
-        self.esHost = "192.168.59.103"
+        # self.esHost = "192.168.59.103"
+        self.esHost = "localhost"
 
         # ElasticSearch ports
         self.esPort = "9200"
