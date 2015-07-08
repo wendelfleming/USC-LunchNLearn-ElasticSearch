@@ -44,6 +44,7 @@ class WoWIndexer:
         es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
         ic = IndicesClient(es)
         if(ic.exists(index='wow')):
+            print("deleting old index")
             self.deleteIndex()
         ic.create(index='wow')
         blah = glob.glob(os.path.join(self.map_directory, '*'))
