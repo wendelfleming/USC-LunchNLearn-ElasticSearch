@@ -33,11 +33,14 @@ class WoWIndexer:
 
 
     def runIndexer(self):
+        print("CREATE INDEX")
         self.__createIndex()
+        print("INDEX DIRECTORY")
         self.__indexDirectory(self.base_directory)
 
 
     def __createIndex(self):
+        print("OPEN ES")
         es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
         ic = IndicesClient(es)
         if(ic.exists(index='wow')):
