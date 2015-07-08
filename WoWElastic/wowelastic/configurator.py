@@ -48,7 +48,8 @@ class WoWAPIConfigurator:
 
         # ElasticSearch host - using Docker VMBox Host IP
         # self.esHost = "192.168.59.103"
-        self.esHost = "localhost"
+        # self.esHost = "localhost"
+        self.esHost = "es_server"
 
         # ElasticSearch ports
         self.esPort = "9200"
