@@ -41,3 +41,9 @@ class WoWAPIConfigurator:
 
         # Location of the mapping files.  This is used to set up the index. - used by indexer
         self.mappingDir = "/projects/lunchnlearn/data/wow/mappings"
+
+        # ElasticSearch host - using Docker VMBox Host IP
+        self.esHost = "192.168.59.103"
+
+        # ElasticSearch ports
+        self.esPort = "9200"

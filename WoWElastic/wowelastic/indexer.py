@@ -23,9 +23,11 @@ import json
 from wowelastic.configurator import WoWAPIConfigurator
 
 class WoWIndexer:
-    def __init__(self, dir, map_dir):
+    def __init__(self, dir, map_dir, es_host, es_port):
         self.base_directory = dir
         self.map_directory = map_dir
+        self.elasticsearch_host = es_host
+        self.elasticsearch_port = es_port
         if(not self.map_directory.endswith("/")):
             self.map_directory += "/"
 
@@ -36,7 +38,7 @@ class WoWIndexer:
 
 
     def __createIndex(self):
-        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
         ic = IndicesClient(es)
         if(ic.exists(index='wow')):
             self.deleteIndex()
@@ -48,7 +50,8 @@ class WoWIndexer:
 
 
     def __mapFile(self, json_map_file):
-        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
+#        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
         ic = IndicesClient(es)
         with open(json_map_file) as json_data:
             d = json.load(json_data)
@@ -66,7 +69,8 @@ class WoWIndexer:
 
 
     def __indexFile(self, json_file):
-        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
+#        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
         with open(json_file) as json_data:
             d = json.load(json_data)
             docType = d.get('itemClass')
@@ -76,12 +80,14 @@ class WoWIndexer:
 
 
     def deleteIndex(self):
-        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
+#        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
         es.indices.delete(index='wow', ignore=[400, 404])
 
 
     def searchTest(self):
-        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+        es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
+#        es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
         d = es.search(index="wow", body={"query": {"prefix" : { "name" : "a" }}})
         x = 1
         print(x)
@@ -89,7 +95,7 @@ class WoWIndexer:
 
 
 wowApiConfig = WoWAPIConfigurator()
-indexer = WoWIndexer(wowApiConfig.applicationItemDir, wowApiConfig.mappingDir)
+indexer = WoWIndexer(wowApiConfig.applicationItemDir, wowApiConfig.mappingDir, wowApiConfig.esHost, wowApiConfig.esPort)
 indexer.runIndexer()
 # indexer.searchTest()
 # indexer.deleteIndex()
