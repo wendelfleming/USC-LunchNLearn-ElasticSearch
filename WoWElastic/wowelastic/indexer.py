@@ -96,6 +96,7 @@ class WoWIndexer:
 
 wowApiConfig = WoWAPIConfigurator()
 indexer = WoWIndexer(wowApiConfig.applicationItemDir, wowApiConfig.mappingDir, wowApiConfig.esHost, wowApiConfig.esPort)
+print("RUNNING: ESSERVER:" + wowApiConfig.esHost + " PORT:" + wowApiConfig.esPort)
 indexer.runIndexer()
 # indexer.searchTest()
 # indexer.deleteIndex()
