@@ -32,7 +32,7 @@ Step-by-step instructions
 - docker build -t docker_indexer .
 - docker run --volumes-from=docker_data --link docker_elasticsearch:es_server docker_indexer
 - cd ../../JavaWebApp/
-- ./gradlew build
+- ./gradlew build -x test
 - ./gradlew copyWarAndProp
 - cd ../Docker-dir/JavaContainer/
 - docker build --tag=wildfly-app .
@@ -61,7 +61,9 @@ World of Warcraft items into our ElasticSearch container.  We alias the ElasticS
 "es_server".  This allows us to refer to the ElasticSearch server as "es_server" in our connection settings.  This also
 installed the Python modules that are required to run this script from the requirements.txt file.  Currently they are the
 requests and elasticsearch modules.
-- gradlew build - this builds the war file.  Java 8 is required.
+- gradlew build - this builds the war file.  Java 8 is required.  The unit test will fail because it is configured to run
+within the Docker container.  Currently I do not have a way of running the unit test easily because ElasticSearch has been
+pushed into containers.
 - gradlew copyWarAndProp - this copies the war file and the JavaWebApp/ext/wowelastic.properties files into
 Docker-dir/JavaContainer.  This is because docker needs files at or below the directory that contains the Dockerfile
 configuration.  It can not reference parent directories.  So these files must be copied into here before building the
