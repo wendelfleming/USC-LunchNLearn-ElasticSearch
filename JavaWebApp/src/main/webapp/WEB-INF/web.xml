@@ -21,6 +21,12 @@
 
     <display-name>Spring MVC Application</display-name>
 
+    <env-entry>
+        <env-entry-name>APPLICATION_CONFIG_FILE</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>file:/opt/wowelastic/conf/wowelastic.properties</env-entry-value>
+    </env-entry>
+
     <servlet>
         <servlet-name>mvc-example</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

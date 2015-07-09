@@ -24,7 +24,7 @@
 
     <elasticsearch:repositories base-package="edu.usc.lunchnlearn.elasticsearch.dao" />
 
-    <elasticsearch:transport-client id="client" cluster-nodes="127.0.0.1:9300" cluster-name="wowelastic" />
+    <elasticsearch:transport-client id="client" cluster-nodes="${elasticsearchHost}:${elasticsearchPort}" cluster-name="${esClusterName}" />
 
     <bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
         <constructor-arg name="client" ref="client"/>

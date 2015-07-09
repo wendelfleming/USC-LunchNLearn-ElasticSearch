@@ -20,6 +20,13 @@
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- APPLICATION_CONFIG_FILE is defined in web.xml as an environment variable -->
+        <property name="location" value="${APPLICATION_CONFIG_FILE}"/>
+    </bean>
+
+
+
     <bean name="searchService" class="edu.usc.lunchnlearn.elasticsearch.service.es.SearchServiceImpl"/>
 
     <bean name="armorService" class="edu.usc.lunchnlearn.elasticsearch.service.es.ArmorServiceImpl"/>
