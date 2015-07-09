@@ -10,6 +10,10 @@ Early commit of code.  It is still a little scattered.
 
 - Docker-dir - docker configuration for a data volume, Python3 indexer, and Java web application server (WildFly)
 
+REQUIREMENTS
+- Java 8
+- Docker (unless you want to install and configure a whole lot of dependencies)
+
 
 TODO:
 - Add faceted search capabilities to the Java web app.
