@@ -48,7 +48,10 @@ the container is built.  The data directory then becomes available once the cont
 ElasticSearch cluster name.  This setting is needed for the Java ElasticSearch configuration and it would be set
 to some value automatically if not set here.  To control that, I am using itzg/elasticsearch.  This starts up
 the container and then does port forwarding for ports 9200 and 9300 to the outside docker host.  It runs as
-a daemon process with -d flag.
+a daemon process with -d flag.  NOTE:  You can use "docker stop docker_elasticsearch" and "docker start docker_elasticsearch"
+to not lose data between starts/stops of elasticsearch.  As long as the docker_elasticsearch container image shows in
+the "docker ps -a" list.  If you delete the image (docker rm &lt;CONTAINERID&rt;), then the data is also deleted.  If
+this was production, it would be better to put the ElasticSearch index data directory into a volume container.
 - The PythonIndexerContainer - this is one of the 3 python programs that is needed to handle downloading, scrubbing,
 and indexing.  I have provided the post scrubbed files in the DataContainer, so this is the only process I provided.  It
 should be the case that all 3 processes have docker containers that run and do their thing.  The downloader and scrubber
