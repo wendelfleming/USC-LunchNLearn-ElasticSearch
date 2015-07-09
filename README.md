@@ -1,22 +1,64 @@
 # USC-LunchNLearn-ElasticSearch
 USC Lunch-n-Learn for ElasticSearch
 
-Initial commit of code.  It is currently scattered.
+Early commit of code.  It is still a little scattered.
 
 - WoWElastic - Python code that downloads, scrubs, and creates the ElasticSearch index.
        This uses the Blizzard API to download the World of Warcraft items.
 
 - JavaWebApp - Java web application that uses the ElasticSearch index created by WoWElastic.
 
-- data - holds the raw download and scrubbed json files (raw_items.tar.gz and items.tar.gz).
-       Also holds the ElasticSearch mapping for all of the item types.  This is slightly modified
-       mappings from the default as I have added suggest functionality based on Item Name.
+- Docker-dir - docker configuration for a data volume, Python3 indexer, and Java web application server (WildFly)
 
 
 TODO:
-- Update this readme with step-by-step instructions on how to set all this up to run locally.
 - Add faceted search capabilities to the Java web app.
 - Add item detail.  Might try pulling from the ElasticSearch source field to get the highlight functionality from ES.
-- Include the elasticsearch.yml configuration.  Currently the only change I have made from the
-    default is to change the cluster.name to "wowelastic".  This will come into play on next TODO.
-- Add 4 Docker containers to handle ElasticSearch, Java WebApp, Python, and a common data container.
+
+
+
+Step-by-step instructions
+- Clone this repository from github or download and unzip it
+- Start up boot2docker (NOTE: pay attention to DOCKER_HOST IP setting that is displayed here)
+- cd <REPO>/Docker-dir/DataContainer
+- docker build -t docker_data .
+- docker run --name docker_data docker_data
+- docker run -d -p 9200:9200 -p 9300:9300 --name docker_elasticsearch -e CLUSTER=wowelastic itzg/elasticsearch
+- cd ../PythonIndexerContainer/
+- docker build -t docker_indexer .
+- docker run --volumes-from=docker_data --link docker_elasticsearch:es_server docker_indexer
+- cd ../../JavaWebApp/
+- ./gradlew build
+- ./gradlew copyWarAndProp
+- cd ../Docker-dir/JavaContainer/
+- docker build --tag=wildfly-app .
+- docker run -it -p 8080:8080 --volumes-from=docker_data --link docker_elasticsearch:es_server wildfly-app
+- http://192.168.59.103:8080/elasticwow/  (NOTE: my DOCKER_HOST IP was 192.168.59.103, yours will be different)
+
+Explanation of the above
+- The DataContainer directory sets up the container that is the data volume for the other containers.  This
+holds the tarballs and the Dockerfile configuration.  The tarballs get untarred into the /data directory when
+the container is built.  The data directory then becomes available once the container is run.  We give the name
+"docker_data" to this container so that we can mount it to other containers using --volumes-from.
+- The ElasticSearch container:  I am using an unofficial ES container because it allows for easily setting the
+ElasticSearch cluster name.  This setting is needed for the Java ElasticSearch configuration and it would be set
+to some value automatically if not set here.  To control that, I am using itzg/elasticsearch.  This starts up
+the container and then does port forwarding for ports 9200 and 9300 to the outside docker host.  It runs as
+a daemon process with -d flag.
+- The PythonIndexerContainer - this is one of the 3 python programs that is needed to handle downloading, scrubbing,
+and indexing.  I have provided the post scrubbed files in the DataContainer, so this is the only process I provided.  It
+should be the case that all 3 processes have docker containers that run and do their thing.  The downloader and scrubber
+need an environment variable, BLIZZARDAPIKEY, set.  This can be done in the Dockerfile with "ENV BLIZZARDAPIKEY=XXXX".
+Connecting the downloader and scrubber with docker is left up to you.  This tasks is what indexes all of the downloaded
+World of Warcraft items into our ElasticSearch container.  We alias the ElasticSearch container within this one as
+"es_server".  This allows us to refer to the ElasticSearch server as "es_server" in our connection settings.  This also
+installed the Python modules that are required to run this script from the requirements.txt file.  Currently they are the
+requests and elasticsearch modules.
+- gradlew build - this builds the war file.  Java 8 is required.
+- gradlew copyWarAndProp - this copies the war file and the JavaWebApp/ext/wowelastic.properties files into
+Docker-dir/JavaContainer.  This is because docker needs files at or below the directory that contains the Dockerfile
+configuration.  It can not reference parent directories.  So these files must be copied into here before building the
+Java WildFly container.
+- WildFly - this is a light weight servlet container that can run your web application.  Again, you have to mount the
+DataContainer.  You need to link the ElasticSearch container as well as provide the "es_server" alias that goes into the
+wowelastic.properties file.  You also have to port map 8080 to the docker host.  To exit this container, hit CTRL-c.
