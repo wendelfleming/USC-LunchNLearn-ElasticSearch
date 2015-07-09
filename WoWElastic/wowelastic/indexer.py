@@ -33,26 +33,21 @@ class WoWIndexer:
 
 
     def runIndexer(self):
-        print("CREATE INDEX")
         self.__createIndex()
-        print("INDEX DIRECTORY")
         self.__indexDirectory(self.base_directory)
 
 
     def __createIndex(self):
-        print("OPEN ES")
         es = Elasticsearch([{'host': self.elasticsearch_host, 'port': self.elasticsearch_port}])
         ic = IndicesClient(es)
         if(ic.exists(index='wow')):
             print("deleting old index")
             self.deleteIndex()
         ic.create(index='wow')
-        print("MAPDIR: " + self.map_directory)
         # blah = glob.glob(os.path.join(self.map_directory, '*'))
         for currentFile in glob.glob(os.path.join(self.map_directory, '*')):
             print("MAP FILE: " + currentFile)
             self.__mapFile(currentFile)
-        print("done create")
 
 
     def __mapFile(self, json_map_file):
@@ -103,7 +98,6 @@ class WoWIndexer:
 wowApiConfig = WoWAPIConfigurator()
 indexer = WoWIndexer(wowApiConfig.applicationItemDir, wowApiConfig.mappingDir, wowApiConfig.esHost, wowApiConfig.esPort)
 print("RUNNING: ESSERVER:" + wowApiConfig.esHost + " PORT:" + wowApiConfig.esPort)
-print("LS: " + ','.join(glob.glob(wowApiConfig.mappingDir)))
 indexer.runIndexer()
 # indexer.searchTest()
 # indexer.deleteIndex()

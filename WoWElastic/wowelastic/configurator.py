@@ -15,12 +15,16 @@
 #
 __author__ = 'wendel fleming'
 
+import os
+
+
 class WoWAPIConfigurator:
 
     def __init__(self):
         # Blizzard API Key - Freely available after logging in to dev.battle.net with a Mashery account
         # see https://dev.battle.net/ and http://www.mashery.com/ - used by downloader and scrubber
-        self.blizzardAPIKey = ""
+        # set it by using the environment variable BLIZZARDAPIKEY
+        self.blizzardAPIKey = os.getenv('BLIZZARDAPIKEY', "")
 
         # Location to save scrubbed JSON files - used by scrubber and indexer
         # self.applicationItemDir = "/java/projects/learn/lunchnlearn/USC-LunchNLearn-ElasticSearch/data/wow/items"
