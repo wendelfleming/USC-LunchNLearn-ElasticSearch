@@ -20,7 +20,7 @@ TODO:
 Step-by-step instructions
 - Clone this repository from github or download and unzip it
 - Start up boot2docker (NOTE: pay attention to DOCKER_HOST IP setting that is displayed here)
-- cd <REPO>/Docker-dir/DataContainer
+- cd &lt; REPO &gt;/Docker-dir/DataContainer
 - docker build -t docker_data .
 - docker run --name docker_data docker_data
 - docker run -d -p 9200:9200 -p 9300:9300 --name docker_elasticsearch -e CLUSTER=wowelastic itzg/elasticsearch
@@ -49,7 +49,7 @@ a daemon process with -d flag.
 and indexing.  I have provided the post scrubbed files in the DataContainer, so this is the only process I provided.  It
 should be the case that all 3 processes have docker containers that run and do their thing.  The downloader and scrubber
 need an environment variable, BLIZZARDAPIKEY, set.  This can be done in the Dockerfile with "ENV BLIZZARDAPIKEY=XXXX".
-Connecting the downloader and scrubber with docker is left up to you.  This tasks is what indexes all of the downloaded
+Connecting the downloader and scrubber with docker is left up to you.  This task is what indexes all of the downloaded
 World of Warcraft items into our ElasticSearch container.  We alias the ElasticSearch container within this one as
 "es_server".  This allows us to refer to the ElasticSearch server as "es_server" in our connection settings.  This also
 installed the Python modules that are required to run this script from the requirements.txt file.  Currently they are the
