@@ -107,6 +107,13 @@ dependencies {
 }
 
 
+task copyWarAndProp(type: Copy) {
+    from war
+    from "ext/wowelastic.properties"
+    into "../Docker-dir/JavaContainer/"
+}
+
+
 war.archiveName "elasticwow.war"
 jettyRunWar.contextPath = 'elasticwow'
 
