@@ -50,6 +50,7 @@ Explanation of the above
 holds the tarballs and the Dockerfile configuration.  The tarballs get untarred into the /data directory when
 the container is built.  The data directory then becomes available once the container is run.  We give the name
 "docker_data" to this container so that we can mount it to other containers using --volumes-from.
+
 - The ElasticSearch container:  I am using an unofficial ES container because it allows for easily setting the
 ElasticSearch cluster name.  This setting is needed for the Java ElasticSearch configuration and it would be set
 to some value automatically if not set here.  To control that, I am using itzg/elasticsearch.  This starts up
@@ -58,22 +59,26 @@ a daemon process with -d flag.  NOTE:  You can use "docker stop docker_elasticse
 to not lose data between starts/stops of elasticsearch.  As long as the docker_elasticsearch container image shows in
 the "docker ps -a" list.  If you delete the image (docker rm &lt;CONTAINERID&rt;), then the data is also deleted.  If
 this was production, it would be better to put the ElasticSearch index data directory into a volume container.
+
 - The PythonIndexerContainer - this is one of the 3 python programs that is needed to handle downloading, scrubbing,
 and indexing.  I have provided the post scrubbed files in the DataContainer, so this is the only process I provided.  It
 should be the case that all 3 processes have docker containers that run and do their thing.  The downloader and scrubber
 need an environment variable, BLIZZARDAPIKEY, set.  This can be done in the Dockerfile with "ENV BLIZZARDAPIKEY=XXXX".
-Connecting the downloader and scrubber with docker is left up to you.  This task is what indexes all of the downloaded
+Connecting the downloader and scrubber with docker is left up to you.  This task is what indexes all of the scrubbed
 World of Warcraft items into our ElasticSearch container.  We alias the ElasticSearch container within this one as
 "es_server".  This allows us to refer to the ElasticSearch server as "es_server" in our connection settings.  This also
 installed the Python modules that are required to run this script from the requirements.txt file.  Currently they are the
 requests and elasticsearch modules.
+
 - gradlew build - this builds the war file.  Java 8 is required.  The unit test will fail because it is configured to run
 within the Docker container.  Currently I do not have a way of running the unit test easily because ElasticSearch has been
 pushed into containers.
+
 - gradlew copyWarAndProp - this copies the war file and the JavaWebApp/ext/wowelastic.properties files into
 Docker-dir/JavaContainer.  This is because docker needs files at or below the directory that contains the Dockerfile
-configuration.  It can not reference parent directories.  So these files must be copied into here before building the
+configuration and can not reference parent directories.  So these files must be copied into here before building the
 Java WildFly container.
-- WildFly - this is a light weight servlet container that can run your web application.  Again, you have to mount the
+
+- WildFly - this is a light weight servlet container that can run your Java web application.  Again, you have to mount the
 DataContainer.  You need to link the ElasticSearch container as well as provide the "es_server" alias that goes into the
 wowelastic.properties file.  You also have to port map 8080 to the docker host.  To exit this container, hit CTRL-c.
