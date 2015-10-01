@@ -1,7 +1,8 @@
 # USC-LunchNLearn-ElasticSearch
 USC Lunch-n-Learn for ElasticSearch
 
-Early commit of code.  It is still a little scattered.
+Quick two week project to demonstrate ElasticSearch and Docker.  (NOTE: I am still learning both of these technologies, so this
+  was a first attempt.  I would not consider these as best-practices.)
 
 - WoWElastic - Python code that downloads, scrubs, and creates the ElasticSearch index.
        This uses the Blizzard API to download the World of Warcraft items.
@@ -9,6 +10,9 @@ Early commit of code.  It is still a little scattered.
 - JavaWebApp - Java web application that uses the ElasticSearch index created by WoWElastic.
 
 - Docker-dir - docker configuration for a data volume, Python3 indexer, and Java web application server (WildFly)
+
+Presentation
+https://docs.google.com/presentation/d/1pwcXhqYBwzrpMfD1YT6zlVmyoYkUeTnPy_5Wx4DiMyM/pub?start=true&loop=false&delayms=30000
 
 REQUIREMENTS
 - Java 8
@@ -18,6 +22,8 @@ REQUIREMENTS
 TODO:
 - Add faceted search capabilities to the Java web app.
 - Add item detail.  Might try pulling from the ElasticSearch source field to get the highlight functionality from ES.
+- Make the Java project compile in a container so that you only need Docker.
+- Get the official ElasticSearch container working.
 
 
 
