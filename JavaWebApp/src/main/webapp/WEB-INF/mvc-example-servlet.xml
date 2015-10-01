@@ -47,6 +47,7 @@
                 <property name="uriExclusionList">
                     <util:list value-type="java.lang.String">
                         <value>db/game/delete</value>
+                        <value>api</value>
                     </util:list>
                 </property>
                 <property name="uriDisplayTextMapping">
