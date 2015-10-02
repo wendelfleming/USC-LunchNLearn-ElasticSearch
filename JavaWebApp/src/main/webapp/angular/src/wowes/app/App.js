@@ -1,3 +1,3 @@
 
 
-angular.module('WoWES.Common', ['ui.bootstrap', 'WoWES.Search']);
+angular.module('WoWES.Common', ['ui.bootstrap', 'WoWES.confservices', 'WoWES.Search']);

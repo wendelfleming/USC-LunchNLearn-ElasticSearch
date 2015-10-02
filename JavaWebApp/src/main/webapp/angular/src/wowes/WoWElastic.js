@@ -1,5 +1,5 @@
 angular
-    .module('WoWES', ['ui.router', 'ui.bootstrap', 'WoWES.services', 'WoWES.Common', 'WoWES.Search'])
+    .module('WoWES', ['ui.router', 'ui.bootstrap', 'WoWES.confservices', 'WoWES.services', 'WoWES.Common', 'WoWES.Search'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
 

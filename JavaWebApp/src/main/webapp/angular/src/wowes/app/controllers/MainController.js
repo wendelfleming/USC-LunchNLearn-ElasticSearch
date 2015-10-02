@@ -1,4 +1,4 @@
-var wowESController = function($scope, $state, $http, SearchService) {
+var wowESController = function($scope, $state, $http, SearchService, ConfigService) {
     $scope.currentPage = 1;
     $scope.searchQuery = "";
 
@@ -9,7 +9,7 @@ var wowESController = function($scope, $state, $http, SearchService) {
     };
 
     $scope.searchSuggest = function(partialValue) {
-        return $http.jsonp("http://192.168.59.103:8080/elasticwow/spring/suggest/" + partialValue + "?callback=JSON_CALLBACK").then(function(response) {
+        return $http.jsonp(ConfigService.getRestServerURL() + "suggest/" + partialValue + "?callback=JSON_CALLBACK").then(function(response) {
             return response.data;
         });
     };

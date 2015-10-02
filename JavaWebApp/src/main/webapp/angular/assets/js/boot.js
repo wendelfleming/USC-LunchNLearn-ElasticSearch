@@ -7,6 +7,7 @@ head.load(
 
 
 
+    { file: 'src/wowes/app/services/ConfigService.js'},
 
     { file: 'src/wowes/app/services/SearchService.js'},
     { file: 'src/wowes/app/App.js' },
