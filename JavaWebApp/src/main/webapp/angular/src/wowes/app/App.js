@@ -7,9 +7,4 @@
 //}
 
 
-//var wowESController = function($scope) {
-//    //$scope.greeting = new Date();
-//    $scope.greeting = "Hello World Yo";
-//};
-
 angular.module('WoWES.Common', ['ui.bootstrap', 'WoWES.Search']);

@@ -44,59 +44,11 @@
                 </tr>
             </tbody>
 
-            <!--<tbody>-->
-                <!--<tr ng-repeat="item in "-->
-
-            <!--<c:forEach items="${resultsPage.content}" var="wowitem">-->
-                <!--<tr>-->
-                    <!--<td><img src="http://media.blizzard.com/wow/icons/56/${wowitem.icon}.jpg"/></td>-->
-                    <!--<td>${wowitem.name}</td>-->
-                    <!--<td>${wowitem.itemLevel}</td>-->
-                    <!--<td>${wowitem.itemClass}</td>-->
-                    <!--<td>${wowitem.itemSubClass}</td>-->
-                <!--</tr>-->
-            <!--</c:forEach>-->
-            <!--</tbody>-->
         </table>
     </div>
 
     <div ng-show="!content.length">
         No results found.
     </div>
-
-    <!--<c:if test="${!empty resultsPage.content}">-->
-        <!--<table>-->
-            <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>&nbsp;</th>-->
-                <!--<th>Name</th>-->
-                <!--<th>iLvL</th>-->
-                <!--<th>Class</th>-->
-                <!--<th>SubClass</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-            <!--<tbody>-->
-            <!--<c:forEach items="${resultsPage.content}" var="wowitem">-->
-                <!--<tr>-->
-                    <!--<td><img src="http://media.blizzard.com/wow/icons/56/${wowitem.icon}.jpg"/></td>-->
-                    <!--<td>${wowitem.name}</td>-->
-                    <!--<td>${wowitem.itemLevel}</td>-->
-                    <!--<td>${wowitem.itemClass}</td>-->
-                    <!--<td>${wowitem.itemSubClass}</td>-->
-                <!--</tr>-->
-            <!--</c:forEach>-->
-            <!--</tbody>-->
-        <!--</table>-->
-
-        <!--<c:if test="${resultsPage.totalPages > 1}">-->
-            <!--${usc:paginator(currentPage, resultsPage.totalPages, urlParams, imageDir )}-->
-        <!--</c:if>-->
-
-
-    <!--</c:if>-->
-    <!--<c:if test="${empty resultsPage.content}">-->
-        <!--No results found.-->
-    <!--</c:if>-->
-
 
 </div>

@@ -12,8 +12,5 @@
 
         <script src="angularjs/head.load.min.js"></script>
         <script src="assets/js/boot.js"></script>
-
-        <!--<script src="angularjs/angular.js"></script>-->
-        <!--<script src="src/wowah/app/App.js"></script>-->
     </body>
 </html>
