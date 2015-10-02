@@ -23,32 +23,31 @@ package edu.usc.lunchnlearn.elasticsearch.controller;
 import edu.usc.lunchnlearn.elasticsearch.dao.bean.BaseItem;
 import edu.usc.lunchnlearn.elasticsearch.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.domain.Page;
 
 @RestController
+//@RequestMapping(value = "/api/search", method = RequestMethod.GET)
 public class SimpleSearchApiController {
 
     @Autowired
     private SearchService searchService;
 
-    @RequestMapping(value = "/api/search", method = RequestMethod.GET)
-    public Page<BaseItem> search(String searchQuery, int currentPage) {
+    @RequestMapping(value = "/api/search", method = RequestMethod.GET, params = {"searchQuery", "currentPage"})
+    public Page<BaseItem> search(@RequestParam("searchQuery") String searchQuery, @RequestParam("currentPage") int currentPage) {
         return searchService.findAll(searchQuery, currentPage);
-//
-//        Map urlParams = new HashMap<>();
-//        urlParams.put("searchQuery", searchQuery);
-//        modelMap.addAttribute("urlParams", urlParams);
-//
-//        modelMap.addAttribute("currentPage", currentPage);
-//        modelMap.addAttribute("searchterm", searchQuery);
-//        modelMap.addAttribute("resultsPage", searchService.findAll(searchQuery, currentPage));
-//
-//        return SEARCHRESULT_PAGE;
     }
 
+    @RequestMapping(value = "/api/search", method = RequestMethod.GET, params = {"searchQuery", "currentPage", "callback"})
+    public MappingJacksonValue search(@RequestParam("searchQuery") String searchQuery, @RequestParam("currentPage") int currentPage, @RequestParam("callback") String callback) {
+        MappingJacksonValue value = new MappingJacksonValue(searchService.findAll(searchQuery, currentPage));
+        value.setJsonpFunction(callback);
+        return value;
+    }
 
 }
