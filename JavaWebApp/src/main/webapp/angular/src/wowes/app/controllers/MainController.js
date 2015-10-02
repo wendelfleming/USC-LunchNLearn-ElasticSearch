@@ -1,10 +1,8 @@
 var wowESController = function($scope, $state, $http, SearchService) {
-    $scope.greeting = "Hello World Yo";
     $scope.currentPage = 1;
     $scope.searchQuery = "";
 
     $scope.onFormSubmit = function() {
-        var stringURL = "/search/" + $scope.currentPage + "/" + $scope.searchQuery;
         SearchService.setCurrentPage($scope.currentPage);
         SearchService.setSearchQuery($scope.searchQuery);
         $state.transitionTo("searchresult", {currentPage: $scope.currentPage, searchQuery:$scope.searchQuery});
