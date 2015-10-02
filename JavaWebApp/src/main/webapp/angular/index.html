@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html ng-app="WoWES">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>WoW ES - Angular Style</title>
+
+    <style type='text/css' media='screen'>@import "assets/css/lunchnlearn.css";</style>
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css">
+</head>
+<body>
+
+
+<!--<div ng-controller="WoWESCtrl">-->
+    <!--{{ greeting }}-->
+<!--</div>-->
+
+
+<div id="main_section">
+    <h1>Elastic WoW - Angular style</h1>
+
+    <div id="content_section">
+
+        <div class="container">
+            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+            <div ui-view></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<script src="angularjs/head.load.min.js"></script>
+<script src="assets/js/boot.js"></script>
+
+<!--<script src="angularjs/angular.js"></script>-->
+<!--<script src="src/wowah/app/App.js"></script>-->
+</body>
+</html>

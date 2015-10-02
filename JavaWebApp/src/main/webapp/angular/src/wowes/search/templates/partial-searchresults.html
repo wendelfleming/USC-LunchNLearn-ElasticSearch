@@ -1,0 +1,102 @@
+<h3>Search Results</h3>
+
+
+<div id="content_section">
+
+    Results for {{ searchQuery }} ({{ totalElements }}): <br/>
+
+    <div ng-show="content.length">
+        <table>
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Name</th>
+                <th>iLvL</th>
+                <th>Class</th>
+                <th>SubClass</th>
+            </tr>
+            </thead>
+            <tfoot>
+                <td colspan="5">
+                    <div class="pagination">
+                        <ul>
+                            <li ng-class="{disabled: currentPage == 1}">
+                                <a href ng-click="previousPage()"><< Previous</a>
+                            </li>
+                            <li ng-repeat="num in range()"
+                                ng-class="{active: num == currentPage}" ng-click="setPage()">
+                                <a href ng-bind="num">1</a>
+                            </li>
+                            <li ng-class="{disabled: currentPage == totalPages}">
+                                <a href ng-click="nextPage()">Next >></a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tfoot>
+            <tbody>
+                <tr ng-repeat="item in content">
+                    <td><img src="http://media.blizzard.com/wow/icons/56/{{item.icon}}.jpg"/></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.itemLevel}}</td>
+                    <td>{{item.itemClass}}</td>
+                    <td>{{item.itemSubClass}}</td>
+                </tr>
+            </tbody>
+
+            <!--<tbody>-->
+                <!--<tr ng-repeat="item in "-->
+
+            <!--<c:forEach items="${resultsPage.content}" var="wowitem">-->
+                <!--<tr>-->
+                    <!--<td><img src="http://media.blizzard.com/wow/icons/56/${wowitem.icon}.jpg"/></td>-->
+                    <!--<td>${wowitem.name}</td>-->
+                    <!--<td>${wowitem.itemLevel}</td>-->
+                    <!--<td>${wowitem.itemClass}</td>-->
+                    <!--<td>${wowitem.itemSubClass}</td>-->
+                <!--</tr>-->
+            <!--</c:forEach>-->
+            <!--</tbody>-->
+        </table>
+    </div>
+
+    <div ng-show="!content.length">
+        No results found.
+    </div>
+
+    <!--<c:if test="${!empty resultsPage.content}">-->
+        <!--<table>-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>&nbsp;</th>-->
+                <!--<th>Name</th>-->
+                <!--<th>iLvL</th>-->
+                <!--<th>Class</th>-->
+                <!--<th>SubClass</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<c:forEach items="${resultsPage.content}" var="wowitem">-->
+                <!--<tr>-->
+                    <!--<td><img src="http://media.blizzard.com/wow/icons/56/${wowitem.icon}.jpg"/></td>-->
+                    <!--<td>${wowitem.name}</td>-->
+                    <!--<td>${wowitem.itemLevel}</td>-->
+                    <!--<td>${wowitem.itemClass}</td>-->
+                    <!--<td>${wowitem.itemSubClass}</td>-->
+                <!--</tr>-->
+            <!--</c:forEach>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+        <!--<c:if test="${resultsPage.totalPages > 1}">-->
+            <!--${usc:paginator(currentPage, resultsPage.totalPages, urlParams, imageDir )}-->
+        <!--</c:if>-->
+
+
+    <!--</c:if>-->
+    <!--<c:if test="${empty resultsPage.content}">-->
+        <!--No results found.-->
+    <!--</c:if>-->
+
+
+</div>
