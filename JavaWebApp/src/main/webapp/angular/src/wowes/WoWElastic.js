@@ -1,5 +1,5 @@
 angular
-    .module('WoWES', ['ui.router', 'WoWES.services', 'WoWES.Common', 'WoWES.Search'])
+    .module('WoWES', ['ui.router', 'ui.bootstrap', 'WoWES.services', 'WoWES.Common', 'WoWES.Search'])
     //.controller('WoWESCtrl', wowESController)
     //.controller('WoWSearchCtrl', wowESSearchController)
     .config(function($stateProvider, $urlRouterProvider) {

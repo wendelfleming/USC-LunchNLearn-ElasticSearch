@@ -12,4 +12,4 @@
 //    $scope.greeting = "Hello World Yo";
 //};
 
-angular.module('WoWES.Common', ['WoWES.Search']);
+angular.module('WoWES.Common', ['ui.bootstrap', 'WoWES.Search']);

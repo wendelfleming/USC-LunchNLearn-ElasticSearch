@@ -9,6 +9,7 @@ head.load(
 
     { file: 'angularjs/angular.js'},
     { file: 'angularjs/angular-ui-router.js'},
+    { file: 'angularjs/ui-bootstrap-tpls-0.13.4.min.js'},
 
 
 

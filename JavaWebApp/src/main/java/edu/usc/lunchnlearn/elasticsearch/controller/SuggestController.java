@@ -17,10 +17,8 @@ package edu.usc.lunchnlearn.elasticsearch.controller;
 
 import edu.usc.lunchnlearn.elasticsearch.service.SearchSuggestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +37,13 @@ public class SuggestController {
         return searchSuggestService.getSuggestions(partial);
     }
 
+    @RequestMapping(value = "/suggest/{partial}", method = RequestMethod.GET, headers = "Accept=application/json", params = {"callback"})
+    public MappingJacksonValue listData(@PathVariable("partial") String partial, @RequestParam("callback") String callback) {
+        MappingJacksonValue value = new MappingJacksonValue(searchSuggestService.getSuggestions(partial));
+        value.setJsonpFunction(callback);
+        return value;
+//        return searchSuggestService.getSuggestions(partial);
+    }
 
 }
 

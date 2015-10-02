@@ -5,7 +5,7 @@
 
 <form name="searchForm" ng-submit="onFormSubmit()" ng-controller="MainCtrl">
     <input type="hidden" name="currentPage" value="1" ng-model="currentPage"/>
-    Search: <input type="text" name="searchQuery" id="wow_search" ng-model="searchQuery"/><br/>
+    Search: <input type="text" name="searchQuery" id="wow_search" ng-model="searchQuery" typeahead="suggestion for suggestion in searchSuggest($viewValue)"/><br/>
     <input type="submit" value="Search"/>
 </form>
 
