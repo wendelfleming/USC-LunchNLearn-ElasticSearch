@@ -11,8 +11,17 @@ Quick two week project to demonstrate ElasticSearch and Docker.  (NOTE: I am sti
 
 - Docker-dir - docker configuration for a data volume, Python3 indexer, and Java web application server (WildFly)
 
+UPDATE:  Added AngularJS front end client
+
+Another quick project to redo the Spring MVC front end client with AngularJS.  Again, this is a learning experience with
+AngularJS so there is room for improvement.
+
 Presentation
-https://docs.google.com/presentation/d/1pwcXhqYBwzrpMfD1YT6zlVmyoYkUeTnPy_5Wx4DiMyM/pub?start=true&loop=false&delayms=30000
+ElasticSearch
+https://docs.google.com/presentation/d/1pwcXhqYBwzrpMfD1YT6zlVmyoYkUeTnPy_5Wx4DiMyM/edit?usp=sharing
+AngularJS
+https://docs.google.com/presentation/d/1NmyMcl1b_Mhcm74feqAskhu0d1JBUwvdVZ-85hxdFwQ/edit?usp=sharing
+
 
 REQUIREMENTS
 - Java 8
@@ -43,7 +52,8 @@ Step-by-step instructions
 - cd ../Docker-dir/JavaContainer/
 - docker build --tag=wildfly-app .
 - docker run -it -p 8080:8080 --volumes-from=docker_data --link docker_elasticsearch:es_server wildfly-app
-- http://192.168.59.103:8080/elasticwow/  (NOTE: my DOCKER_HOST IP was 192.168.59.103, yours will be different)
+- http://192.168.59.103:8080/elasticwow/  (NOTE: my DOCKER_HOST IP was 192.168.59.103, yours may be different)
+- http://192.168.59.103:8080/elasticwow/angular/index.html  (NOTE: The AngularJS client)
 
 Explanation of the above
 - The DataContainer directory sets up the container that is the data volume for the other containers.  This
